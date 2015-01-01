@@ -1,6 +1,9 @@
 {
     "name": "stevewest/changelog",
     "description": "Package to enable change logs to be parsed",
+    "type": "library",
+    "keywords": ["change", "log", "changelog", "parser"],
+    "homepage": "https://github.com/stevewest/changelog",
     "require-dev": {
         "codeception/codeception": "~2.0"
     },
@@ -11,5 +14,10 @@
             "email": "uruwolf@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ChangeLog\\": "src/"
+        }
+    }
 }

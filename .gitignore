@@ -1,3 +1,5 @@
 /vendor/
-compsoer.lock
+composer.lock
 .idea
+
+tests/_output/*
