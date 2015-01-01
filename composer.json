@@ -1,0 +1,15 @@
+{
+    "name": "stevewest/changelog",
+    "description": "Package to enable change logs to be parsed",
+    "require-dev": {
+        "codeception/codeception": "~2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve West",
+            "email": "uruwolf@gmail.com"
+        }
+    ],
+    "require": {}
+}
