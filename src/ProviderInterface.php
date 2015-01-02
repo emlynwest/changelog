@@ -21,6 +21,8 @@ interface ProviderInterface
 	 * See individual providers for the needed keys.
 	 *
 	 * @param array $config
+	 *
+	 * @return void
 	 */
 	public function setConfig(array $config);
 

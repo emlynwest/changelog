@@ -29,10 +29,7 @@ abstract class AbstractProvider implements ProviderInterface
 	protected $configDefaults = [];
 
 	/**
-	 * Sets the provider's config.
-	 * See individual providers for the needed keys.
-	 *
-	 * @param array $config
+	 * {@inheritdoc}
 	 */
 	public function setConfig(array $config)
 	{

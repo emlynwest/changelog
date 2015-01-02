@@ -23,10 +23,7 @@ class AbstractProviderStub extends AbstractProvider
 	];
 
 	/**
-	 * Returns the next available line of the change log or null if there is no more
-	 * content.
-	 *
-	 * @return string|null
+	 * {@inheritdoc}
 	 */
 	public function nextLine()
 	{
