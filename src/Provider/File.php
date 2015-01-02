@@ -25,7 +25,7 @@ class File extends AbstractProvider
 	 * Returns the next available line of the change log or null if there is no more
 	 * content.
 	 *
-	 * @return string|null
+	 * @return string
 	 *
 	 * @throws InvalidArgumentException
 	 */
@@ -34,14 +34,7 @@ class File extends AbstractProvider
 		// If there's no open file handle then create one
 		if ($this->handle === null)
 		{
-			$file = $this->getConfig('file');
-
-			if ( ! $file || ! is_file($file))
-			{
-				throw new InvalidArgumentException('File not specified or invalid.');
-			}
-
-			$this->handle = fopen($file, 'r');
+			$this->createHandle();
 		}
 
 		// Read the next line
@@ -49,6 +42,25 @@ class File extends AbstractProvider
 
 		// If false then we are done and just return null
 		return ( ! $line) ? null : trim($line);
+	}
+
+	/**
+	 * Creates a new file handle.
+	 *
+	 * @return void
+	 *
+	 * @throws InvalidArgumentException
+	 */
+	protected function createHandle()
+	{
+		$file = $this->getConfig('file');
+
+		if ( ! $file || ! is_file($file))
+		{
+			throw new InvalidArgumentException('File not specified or invalid.');
+		}
+
+		$this->handle = fopen($file, 'r');
 	}
 
 }

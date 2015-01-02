@@ -41,6 +41,8 @@ abstract class AbstractProvider implements ProviderInterface
 	 * null if there is no default.
 	 *
 	 * @param string|int $key
+	 *
+	 * @return string
 	 */
 	public function getConfig($key = null)
 	{
