@@ -3,7 +3,7 @@ ChangeLog
 
 ![Travis Build](https://img.shields.io/travis/stevewest/changelog.svg?style=flat-square)
 ![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)
-![Code Quality](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)
+![Code Quality](https://img.shields.io/scrutinizer/coverage/g/stevewest/changelog.svg?style=flat-square)
 ![HHVM](https://img.shields.io/hhvm/stevewest/changelog.svg?style=flat-square)
 
 Package to enable change logs to be parsed into objects for manipulation in code.
