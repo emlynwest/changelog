@@ -10,22 +10,10 @@
 
 namespace ChangeLog;
 
-use Codeception\TestCase\Test;
-
 /**
- * Tests for ChangeLog
+ * Standard interface for change log parsers.
  */
-class ChangeLogTest extends Test
+interface ParserInterface
 {
-
-	/**
-	 * @var ChangeLog
-	 */
-	protected $changeLog;
-
-	protected function _before()
-	{
-		$this->changeLog = new ChangeLog;
-	}
 
 }

@@ -1,5 +1,5 @@
 /vendor/
 composer.lock
 .idea
-
+codeception.yml
 tests/_output/*

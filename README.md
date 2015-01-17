@@ -8,7 +8,7 @@ ChangeLog
 
 Package to enable change logs to be parsed into objects for manipulation in code.
 
-Eventually the package will be able to read changelogs from a number of sources, be
+Eventually the package will be able to read change logs from a number of sources, be
 able to convert those to an object structure to allow them to be modified easily and
 then written out to a configured output. The output could be to a file on disk or
 committed to a git repo.

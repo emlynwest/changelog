@@ -27,3 +27,7 @@ This is a change test change log
 ### Added
 - First add
 - Second add
+
+[unreleased]: http://server.dev/unreleased
+[0.0.5]: http://server.dev/0.0.6
+[0.0.5]: http://server.dev/0.0.5
