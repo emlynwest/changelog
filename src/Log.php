@@ -10,10 +10,15 @@
 
 namespace ChangeLog;
 
+use ArrayIterator;
+use Countable;
+use IteratorAggregate;
+use Traversable;
+
 /**
  * Represents a full change log.
  */
-class Log
+class Log implements IteratorAggregate, Countable
 {
 
 	/**
@@ -113,4 +118,18 @@ class Log
 		$this->title = $title;
 	}
 
-}
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getIterator()
+	{
+		return new ArrayIterator($this->releases);
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function count()
+	{
+		return count($this->releases);
+	}}

@@ -75,4 +75,33 @@ class LogTest extends Test
 		);
 	}
 
+	public function testArrayAcces()
+	{
+		$release1 = new Release;
+		$release1->setName('0.1.0');
+		$release2 = new Release;
+		$release2->setName('0.2.0');
+
+		$log = new Log;
+		$log->addRelease($release1);
+		$log->addRelease($release2);
+
+		$this->assertEquals(
+			2,
+			count($log)
+		);
+
+		$releases = [];
+		/** @var Release $release */
+		foreach ($log as $release)
+		{
+			$releases[] = $release->getName();
+		}
+
+		$this->assertEquals(
+			['0.1.0', '0.2.0'],
+			$releases
+		);
+	}
+
 }

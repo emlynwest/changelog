@@ -39,6 +39,14 @@ class Release
 	protected $changes = [];
 
 	/**
+	 * @param string $name
+	 */
+	public function __construct($name = null)
+	{
+		$this->setName($name);
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getName()
