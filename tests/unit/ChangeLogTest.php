@@ -11,6 +11,7 @@
 namespace ChangeLog;
 
 use Codeception\TestCase\Test;
+use Mockery;
 
 /**
  * Tests for ChangeLog
@@ -18,14 +19,21 @@ use Codeception\TestCase\Test;
 class ChangeLogTest extends Test
 {
 
-	/**
-	 * @var ChangeLog
-	 */
-	protected $changeLog;
-
-	protected function _before()
+	public function testParse()
 	{
-		$this->changeLog = new ChangeLog;
+		$content = ['foobar'];
+		$provider = Mockery::mock('ChangeLog\ProviderInterface');
+		$provider->shouldReceive('getContent')
+			->once()
+			->andReturn($content);
+
+		$parser = Mockery::mock('ChangeLog\ParserInterface');
+		$parser->shouldReceive('parse')
+			->once()
+			->with($content);
+
+		(new ChangeLog($provider, $parser))
+			->parse();
 	}
 
 }

@@ -5,7 +5,8 @@
     "keywords": ["change", "log", "changelog", "parser"],
     "homepage": "https://github.com/stevewest/changelog",
     "require-dev": {
-        "codeception/codeception": "~2.0"
+        "codeception/codeception": "~2.0",
+        "codeception/mockery-module": "dev-master"
     },
     "license": "MIT",
     "authors": [
