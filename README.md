@@ -1,9 +1,9 @@
 # ChangeLog
 
-![Travis Build](https://img.shields.io/travis/stevewest/changelog.svg?style=flat-square)
-![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)
-![Code Quality](https://img.shields.io/scrutinizer/coverage/g/stevewest/changelog.svg?style=flat-square)
-![HHVM](https://img.shields.io/hhvm/stevewest/changelog.svg?style=flat-square)
+[![Travis Build](https://img.shields.io/travis/stevewest/changelog.svg?style=flat-square)](https://travis-ci.org/stevewest/changelog/)
+[![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
+[![Code Quality](https://img.shields.io/scrutinizer/coverage/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
+[![HHVM](https://img.shields.io/hhvm/stevewest/changelog.svg?style=flat-square)](http://hhvm.h4cc.de/package/stevewest/changelog)
 
 Package to enable change logs to be parsed into objects for manipulation in code.
 
@@ -15,7 +15,7 @@ committed to a git repo.
 Everything is adaptor/driver based so multiple sources, parsers and outputs can be
 used as desired. There are also plans for a cli script.
 
-## Example
+## Quick Example
 
 ```php
 <?php
