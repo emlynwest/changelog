@@ -38,6 +38,16 @@ class LogTest extends Test
 		);
 	}
 
+	public function testGetSetTitle()
+	{
+		$title = 'My Change Log';
+		$this->log->setTitle($title);
+		$this->assertEquals(
+			$title,
+			$this->log->getTitle()
+		);
+	}
+
 	public function testGetSetRelease()
 	{
 		$name = '1.0.0';

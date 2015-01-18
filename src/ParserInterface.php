@@ -16,4 +16,13 @@ namespace ChangeLog;
 interface ParserInterface
 {
 
+	/**
+	 * Takes the given content and parses it into a populated Log object.
+	 *
+	 * @param string[] $content
+	 *
+	 * @return Log
+	 */
+	public function parse($content);
+
 }

@@ -30,7 +30,7 @@ interface ProviderInterface
 	 * Returns the content of the change log to be parsed.
 	 * The returned data should be an array of strings, one entry for each file line.
 	 *
-	 * @return string[]
+	 * @return string[]|null
 	 */
 	public function getContent();
 

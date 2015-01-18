@@ -43,15 +43,15 @@ class File extends AbstractProvider
 
 		$content = file_get_contents($file);
 
-		if ($content)
+		if ( ! $content)
 		{
-			$content = explode(
-				$this->getConfig('line_separator'),
-				$content
-			);
+			return null;
 		}
 
-		return $content;
+		return explode(
+			$this->getConfig('line_separator'),
+			$content
+		);
 	}
 
 }

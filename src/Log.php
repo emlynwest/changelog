@@ -19,12 +19,17 @@ class Log
 	/**
 	 * @var string
 	 */
-	protected $description;
+	protected $description = '';
 
 	/**
 	 * @var Release[]
 	 */
-	protected $releases;
+	protected $releases = [];
+
+	/**
+	 * @var string
+	 */
+	protected $title = '';
 
 	/**
 	 * Gets all the releases for the log.
@@ -90,6 +95,22 @@ class Log
 	public function setDescription($description)
 	{
 		$this->description = $description;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTitle()
+	{
+		return $this->title;
+	}
+
+	/**
+	 * @param string $title
+	 */
+	public function setTitle($title)
+	{
+		$this->title = $title;
 	}
 
 }
