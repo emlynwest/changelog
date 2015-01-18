@@ -27,11 +27,11 @@ interface ProviderInterface
 	public function setConfig(array $config);
 
 	/**
-	 * Returns the next available line of the change log or null if there is no more
-	 * content.
+	 * Returns the content of the change log to be parsed.
+	 * The returned data should be an array of strings, one entry for each file line.
 	 *
-	 * @return string|null
+	 * @return string[]
 	 */
-	public function nextLine();
+	public function getContent();
 
 }

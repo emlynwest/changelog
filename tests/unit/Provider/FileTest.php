@@ -36,17 +36,8 @@ class FileTest extends Test
 		]);
 
 		$this->assertEquals(
-			'hello',
-			$this->file->nextLine()
-		);
-
-		$this->assertEquals(
-			'',
-			$this->file->nextLine()
-		);
-
-		$this->assertNull(
-			$this->file->nextLine()
+			['hello', ''],
+			$this->file->getContent()
 		);
 	}
 
@@ -55,7 +46,7 @@ class FileTest extends Test
 	 */
 	public function testFileNotSet()
 	{
-		$this->file->nextLine();
+		$this->file->getContent();
 	}
 
 	/**
@@ -64,7 +55,7 @@ class FileTest extends Test
 	public function testInvalidFile()
 	{
 		$this->file->setConfig(['file' => 'foobar']);
-		$this->file->nextLine();
+		$this->file->getContent();
 	}
 
 }

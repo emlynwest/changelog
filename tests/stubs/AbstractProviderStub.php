@@ -25,7 +25,7 @@ class AbstractProviderStub extends AbstractProvider
 	/**
 	 * {@inheritdoc}
 	 */
-	public function nextLine()
+	public function getContent()
 	{
 		return null;
 	}

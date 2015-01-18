@@ -15,43 +15,24 @@ use InvalidArgumentException;
 
 /**
  * Allows change logs to be loaded from the file system.
+ *
+ * Config can contain the keys 'file' and 'line_separator'. 'file' is not optional.
  */
 class File extends AbstractProvider
 {
 
+	protected $configDefaults = [
+		'line_separator' => "\n",
+	];
+
 	protected $handle;
 
 	/**
-	 * Returns the next available line of the change log or null if there is no more
-	 * content.
-	 *
-	 * @return string
+	 * {@inheritdoc}
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function nextLine()
-	{
-		// If there's no open file handle then create one
-		if ($this->handle === null)
-		{
-			$this->createHandle();
-		}
-
-		// Read the next line
-		$line = fgets($this->handle);
-
-		// If false then we are done and just return null
-		return ( ! $line) ? null : trim($line);
-	}
-
-	/**
-	 * Creates a new file handle.
-	 *
-	 * @return void
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	protected function createHandle()
+	public function getContent()
 	{
 		$file = $this->getConfig('file');
 
@@ -60,7 +41,17 @@ class File extends AbstractProvider
 			throw new InvalidArgumentException('File not specified or invalid.');
 		}
 
-		$this->handle = fopen($file, 'r');
+		$content = file_get_contents($file);
+
+		if ($content)
+		{
+			$content = explode(
+				$this->getConfig('line_separator'),
+				$content
+			);
+		}
+
+		return $content;
 	}
 
 }
