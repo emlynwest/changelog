@@ -24,7 +24,7 @@ interface ProviderInterface
 	 *
 	 * @return void
 	 */
-	public function setConfig(array $config);
+	public function setConfig($config);
 
 	/**
 	 * Returns the content of the change log to be parsed.

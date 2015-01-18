@@ -17,11 +17,33 @@ class ChangeLog
 {
 
 	/**
-	 * @return bool
+	 * @var ParserInterface
 	 */
-	public function returnTrue()
+	protected $parser;
+
+	/**
+	 * @var ProviderInterface
+	 */
+	protected $provider;
+
+	/**
+	 * @param ProviderInterface $provider
+	 * @param ParserInterface   $parser
+	 */
+	public function __construct(ProviderInterface $provider, ParserInterface $parser)
 	{
-		return true;
+		$this->provider = $provider;
+		$this->parser = $parser;
+	}
+
+	/**
+	 * @return Log
+	 */
+	public function parse()
+	{
+		return $this->parser->parse(
+			$this->provider->getContent()
+		);
 	}
 
 }

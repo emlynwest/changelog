@@ -29,9 +29,17 @@ abstract class AbstractProvider implements ProviderInterface
 	protected $configDefaults = [];
 
 	/**
+	 * @param array $config
+	 */
+	public function __construct($config = [])
+	{
+		$this->setConfig($config);
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
-	public function setConfig(array $config)
+	public function setConfig($config)
 	{
 		$this->config = $config;
 	}
@@ -42,7 +50,7 @@ abstract class AbstractProvider implements ProviderInterface
 	 *
 	 * @param string|int $key
 	 *
-	 * @return string
+	 * @return string|array
 	 */
 	public function getConfig($key = null)
 	{

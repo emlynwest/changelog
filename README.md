@@ -1,5 +1,4 @@
-ChangeLog
-=========
+# ChangeLog
 
 ![Travis Build](https://img.shields.io/travis/stevewest/changelog.svg?style=flat-square)
 ![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)
@@ -13,5 +12,25 @@ able to convert those to an object structure to allow them to be modified easily
 then written out to a configured output. The output could be to a file on disk or
 committed to a git repo.
 
-Everything will be "driver" based so multiple sources, parsers and outputs can be
-used as desired.
+Everything is adaptor/driver based so multiple sources, parsers and outputs can be
+used as desired. There are also plans for a cli script.
+
+## Example
+
+```php
+<?php
+
+$provider = new \ChangeLog\Provider\File([
+	'file' => 'path/to/changelog.md'
+]);
+
+$parser = new \ChangeLog\Parser\KeepAChangeLog();
+
+$log = (new \ChangeLog\ChangeLog(
+	$provider,
+	$parser
+));
+
+// Instance of ChangeLog\Log
+var_dump($log);
+```
