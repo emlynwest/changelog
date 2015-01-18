@@ -2,7 +2,7 @@
 
 ## [Unreleased][unreleased]
 
-## [0.1.0][0.1.0]
+## [0.1.0][0.1.0] - 2015-01-18
 ### Added
 - Initial version
 
