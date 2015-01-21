@@ -4,6 +4,7 @@
 ## Added
 - Implements array access for `Log` [#1](https://github.com/stevewest/changelog/issues/1)
 - Added name param to Release constructor.
+- Added ability to write out logs to file [#2](https://github.com/stevewest/changelog/issues/2)
 
 ## Changed
 - Renamed "providers" to "IO"

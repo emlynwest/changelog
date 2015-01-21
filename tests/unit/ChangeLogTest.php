@@ -22,8 +22,8 @@ class ChangeLogTest extends Test
 	public function testParse()
 	{
 		$content = ['foobar'];
-		$provider = Mockery::mock('ChangeLog\IOInterface');
-		$provider->shouldReceive('getContent')
+		$input = Mockery::mock('ChangeLog\IOInterface');
+		$input->shouldReceive('getContent')
 			->once()
 			->andReturn($content);
 
@@ -32,8 +32,30 @@ class ChangeLogTest extends Test
 			->once()
 			->with($content);
 
-		(new ChangeLog($provider, $parser))
-			->parse();
+		$changeLog = new ChangeLog($parser);
+		$changeLog->setInput($input);
+		$changeLog->parse();
+	}
+
+	public function testWrite()
+	{
+		$log = new Log;
+		$parsed = 'foobar';
+
+		$parser = Mockery::mock('ChangeLog\ParserInterface');
+		$parser->shouldReceive('render')
+			->once()
+			->with($log)
+			->andReturn($parsed);
+
+		$output = Mockery::mock('ChangeLog\IOInterface');
+		$output->shouldReceive('setContent')
+			->once()
+			->with($parsed);
+
+		$changeLog = new ChangeLog($parser);
+		$changeLog->setOutput($output);
+		$changeLog->write($log);
 	}
 
 }

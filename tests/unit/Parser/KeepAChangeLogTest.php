@@ -10,6 +10,8 @@
 
 namespace ChangeLog\Parser;
 
+use ChangeLog\Log;
+use ChangeLog\Release;
 use Codeception\TestCase\Test;
 
 /**
@@ -128,6 +130,51 @@ class KeepAChangeLogTest extends Test
 		$this->assertTrue(
 			$log->hasRelease('0.4.0')
 		);
+	}
+
+	public function testRender()
+	{
+		$log = new Log;
+		$log->setDescription('This is my change log, it will have lots of changes in it!');
+		$log->setTitle('My change log');
+
+		$release1 = new Release('1.0.0');
+		$release1->setAllChanges([
+			'Added' => ['Thing 1', 'Thing 2'],
+			'Changed' => ['Some change']
+		]);
+		$log->addRelease($release1);
+
+		$release2 = new Release('0.1.0');
+		$release2->setAllChanges([
+			'Added' => ['Initial release'],
+		]);
+		$log->addRelease($release2);
+
+		$expected = <<<'CONTENT'
+# My change log
+This is my change log, it will have lots of changes in it!
+
+## 1.0.0
+### Added
+- Thing 1
+- Thing 2
+
+### Changed
+- Some change
+
+## 0.1.0
+### Added
+- Initial release
+
+CONTENT;
+
+		$actual = $this->parser->render($log);
+		$this->assertEquals(
+			$expected,
+			$actual
+		);
+
 	}
 
 }

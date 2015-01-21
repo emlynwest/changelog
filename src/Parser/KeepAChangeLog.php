@@ -118,4 +118,47 @@ class KeepAChangeLog implements ParserInterface
 		return $release;
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
+	public function render(Log $log)
+	{
+		$content = "# {$log->getTitle()}\n" .
+			"{$log->getDescription()}\n";
+
+		/** @var Release $release */
+		foreach ($log as $release)
+		{
+			$content .= $this->renderRelease($release);
+		}
+
+		// Shave off the last extra \n before returning
+		return $content;
+	}
+
+	public function renderRelease(Release $release)
+	{
+		$content = "\n## {$release->getName()}\n";
+
+		foreach ($release->getAllChanges() as $type => $changes)
+		{
+			$content .= $this->renderType($type, $changes);
+		}
+
+		return substr($content, 0, strlen($content)-1);
+	}
+
+	public function renderType($type, $changes)
+	{
+		$content = '';
+
+		if (count($changes) > 0)
+		{
+			$content = "### $type\n" .
+				'- ' . implode("\n- ", $changes) . "\n";
+		}
+
+		return $content . "\n";
+	}
+
 }

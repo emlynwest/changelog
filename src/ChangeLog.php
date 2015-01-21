@@ -11,7 +11,7 @@
 namespace ChangeLog;
 
 /**
- * Class ChangeLog
+ * Main logic class that ties everything together.
  */
 class ChangeLog
 {
@@ -24,26 +24,64 @@ class ChangeLog
 	/**
 	 * @var IOInterface
 	 */
-	protected $provider;
+	protected $input;
 
 	/**
-	 * @param IOInterface $provider
+	 * @var IOInterface
+	 */
+	protected $output;
+
+	/**
+	 * @param IOInterface $input
 	 * @param ParserInterface   $parser
 	 */
-	public function __construct(IOInterface $provider, ParserInterface $parser)
+	public function __construct(ParserInterface $parser)
 	{
-		$this->provider = $provider;
 		$this->parser = $parser;
 	}
 
 	/**
+	 * Reads in the given log and returns the constructed Log object.
+	 *
 	 * @return Log
 	 */
 	public function parse()
 	{
 		return $this->parser->parse(
-			$this->provider->getContent()
+			$this->input->getContent()
 		);
+	}
+
+	/**
+	 * Writes out the given Log to the chosen output.
+	 *
+	 * @param Log $log
+	 */
+	public function write(Log $log)
+	{
+		$this->output->setContent(
+			$this->parser->render($log)
+		);
+	}
+
+	/**
+	 * Sets the adaptor to use for reading change logs.
+	 *
+	 * @param IOInterface $input
+	 */
+	public function setInput($input)
+	{
+		$this->input = $input;
+	}
+
+	/**
+	 * Sets the adaptor to use for writing change logs.
+	 *
+	 * @param IOInterface $output
+	 */
+	public function setOutput($output)
+	{
+		$this->output = $output;
 	}
 
 }

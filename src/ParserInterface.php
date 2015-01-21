@@ -25,4 +25,13 @@ interface ParserInterface
 	 */
 	public function parse($content);
 
+	/**
+	 * Takes the given log and turns that back into a text change log.
+	 *
+	 * @param Log $log
+	 *
+	 * @return string
+	 */
+	public function render(Log $log);
+
 }
