@@ -4,6 +4,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
 [![Code Quality](https://img.shields.io/scrutinizer/coverage/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
 [![HHVM](https://img.shields.io/hhvm/stevewest/changelog.svg?style=flat-square)](http://hhvm.h4cc.de/package/stevewest/changelog)
+[![Packagist](https://img.shields.io/packagist/v/stevewest/changelog.svg?style=flat-square)](https://packagist.org/packages/stevewest/changelog)
 
 Package to enable change logs to be parsed into objects for manipulation in code.
 
