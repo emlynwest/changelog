@@ -18,20 +18,42 @@ used as desired. There are also plans for a cli script.
 
 ## Quick Example
 
+### Parsing a log
+
 ```php
 <?php
 
-$provider = new \ChangeLog\Provider\File([
+$input = new \ChangeLog\IO\File([
 	'file' => 'path/to/changelog.md'
 ]);
 
 $parser = new \ChangeLog\Parser\KeepAChangeLog();
 
-$log = (new \ChangeLog\ChangeLog(
-	$provider,
-	$parser
-));
+$cl = new \ChangeLog\ChangeLog($parser);
+$cl->setInput($input);
+
+$log = $cl->parse();
 
 // Instance of ChangeLog\Log
 var_dump($log);
+```
+
+### Writing a log
+
+```php
+<?php
+
+$output = new \ChangeLog\IO\File([
+	'file' => 'path/to/changelog.md'
+]);
+
+$parser = new \ChangeLog\Parser\KeepAChangeLog();
+
+$cl = new \ChangeLog\ChangeLog($parser);
+$cl->setOutput($output);
+
+$log = new Log;
+// Build up the log file information here
+
+$cl->write($log);
 ```
