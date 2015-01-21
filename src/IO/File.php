@@ -25,8 +25,6 @@ class File extends AbstractIO
 		'line_separator' => "\n",
 	];
 
-	protected $handle;
-
 	/**
 	 * {@inheritdoc}
 	 *
@@ -34,12 +32,7 @@ class File extends AbstractIO
 	 */
 	public function getContent()
 	{
-		$file = $this->getConfig('file');
-
-		if ( ! $file || ! is_file($file))
-		{
-			throw new InvalidArgumentException('File not specified or invalid.');
-		}
+		$file = $this->getFileLocation();
 
 		$content = file_get_contents($file);
 
@@ -52,6 +45,32 @@ class File extends AbstractIO
 			$this->getConfig('line_separator'),
 			$content
 		);
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setContent($content)
+	{
+		$file = $this->getFileLocation();
+		file_put_contents($file, $content);
+	}
+
+	/**
+	 * Gets the file location from the config.
+	 *
+	 * @return string
+	 */
+	protected function getFileLocation()
+	{
+		$file = $this->getConfig('file');
+
+		if ( ! $file || ! is_file($file))
+		{
+			throw new InvalidArgumentException('File not specified or invalid.');
+		}
+
+		return $file;
 	}
 
 }

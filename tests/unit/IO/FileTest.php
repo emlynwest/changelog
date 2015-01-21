@@ -10,6 +10,7 @@
 
 namespace ChangeLog\IO;
 
+use Codeception\Module\Filesystem;
 use Codeception\TestCase\Test;
 use InvalidArgumentException;
 
@@ -56,6 +57,23 @@ class FileTest extends Test
 	{
 		$this->file->setConfig(['file' => 'foobar']);
 		$this->file->getContent();
+	}
+
+	public function testSetContent()
+	{
+		$content = 'foobar';
+
+		$file = __DIR__.'/../../_output/IO-File-testSetContent.txt';
+		touch($file);
+
+		$this->file->setConfig(['file' => $file]);
+		$this->file->setContent($content);
+
+		/** @var Filesystem $filesystem */
+		$filesystem = $this->getModule('Filesystem');
+		$filesystem->openFile($file);
+		$filesystem->seeInThisFile($content);
+		$filesystem->deleteFile($file);
 	}
 
 }

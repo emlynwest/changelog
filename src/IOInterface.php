@@ -34,4 +34,11 @@ interface IOInterface
 	 */
 	public function getContent();
 
+	/**
+	 * Writes out the given content,
+	 *
+	 * @param string $content
+	 */
+	public function setContent($content);
+
 }

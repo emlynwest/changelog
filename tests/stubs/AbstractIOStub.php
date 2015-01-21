@@ -30,4 +30,11 @@ class AbstractIOStub extends AbstractIO
 		return null;
 	}
 
+	/**
+	 *{@inheritdoc}
+	 */
+	public function setContent($content)
+	{
+	}
+
 }
