@@ -8,14 +8,14 @@
  * @link https://github.com/stevewest/changelog
  */
 
-namespace ChangeLog\Provider;
+namespace ChangeLog\IO;
 
-use ChangeLog\AbstractProvider;
+use ChangeLog\AbstractIO;
 
 /**
  * Allows a native string to be used as a change log source
  */
-class String extends AbstractProvider
+class String extends AbstractIO
 {
 
 	/**

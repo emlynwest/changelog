@@ -8,13 +8,13 @@
  * @link https://github.com/stevewest/changelog
  */
 
-namespace ChangeLog\Provider;
+namespace ChangeLog\IO;
 
 use Codeception\TestCase\Test;
 use InvalidArgumentException;
 
 /**
- * Tests for Provider\File
+ * Tests for IO\File
  */
 class FileTest extends Test
 {

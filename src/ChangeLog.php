@@ -22,15 +22,15 @@ class ChangeLog
 	protected $parser;
 
 	/**
-	 * @var ProviderInterface
+	 * @var IOInterface
 	 */
 	protected $provider;
 
 	/**
-	 * @param ProviderInterface $provider
+	 * @param IOInterface $provider
 	 * @param ParserInterface   $parser
 	 */
-	public function __construct(ProviderInterface $provider, ParserInterface $parser)
+	public function __construct(IOInterface $provider, ParserInterface $parser)
 	{
 		$this->provider = $provider;
 		$this->parser = $parser;

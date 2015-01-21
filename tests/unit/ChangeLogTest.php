@@ -22,7 +22,7 @@ class ChangeLogTest extends Test
 	public function testParse()
 	{
 		$content = ['foobar'];
-		$provider = Mockery::mock('ChangeLog\ProviderInterface');
+		$provider = Mockery::mock('ChangeLog\IOInterface');
 		$provider->shouldReceive('getContent')
 			->once()
 			->andReturn($content);

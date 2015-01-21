@@ -10,23 +10,23 @@
 
 namespace ChangeLog;
 
-use ChangeLog\Stub\AbstractProviderStub;
+use ChangeLog\Stub\AbstractIOStub;
 use Codeception\TestCase\Test;
 
 /**
- * Tests for AbstractProvider
+ * Tests for AbstractIO
  */
-class AbstractProviderTest extends Test
+class AbstractIOTest extends Test
 {
 
 	/**
-	 * @var AbstractProvider
+	 * @var AbstractIO
 	 */
 	protected $provider;
 
 	protected function _before()
 	{
-		$this->provider = new AbstractProviderStub;
+		$this->provider = new AbstractIOStub;
 	}
 
 	public function testGetConfig()

@@ -8,9 +8,9 @@
  * @link https://github.com/stevewest/changelog
  */
 
-namespace ChangeLog\Provider;
+namespace ChangeLog\IO;
 
-use ChangeLog\AbstractProvider;
+use ChangeLog\AbstractIO;
 use InvalidArgumentException;
 
 /**
@@ -18,7 +18,7 @@ use InvalidArgumentException;
  *
  * Config can contain the keys 'file' and 'line_separator'. 'file' is not optional.
  */
-class File extends AbstractProvider
+class File extends AbstractIO
 {
 
 	protected $configDefaults = [

@@ -8,12 +8,12 @@
  * @link https://github.com/stevewest/changelog
  */
 
-namespace ChangeLog\Provider;
+namespace ChangeLog\IO;
 
 use Codeception\TestCase\Test;
 
 /**
- * Tests for Provider\String
+ * Tests for IO\String
  */
 class StringTest extends Test
 {

@@ -13,7 +13,7 @@ namespace ChangeLog;
 /**
  * Common logic for providers
  */
-abstract class AbstractProvider implements ProviderInterface
+abstract class AbstractIO implements IOInterface
 {
 
 	/**

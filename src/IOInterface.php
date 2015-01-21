@@ -13,7 +13,7 @@ namespace ChangeLog;
 /**
  * Provides a common interface for reading change logs from various locations.
  */
-interface ProviderInterface
+interface IOInterface
 {
 
 	/**

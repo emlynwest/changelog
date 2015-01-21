@@ -10,12 +10,12 @@
 
 namespace ChangeLog\Stub;
 
-use ChangeLog\AbstractProvider;
+use ChangeLog\AbstractIO;
 
 /**
- * Stub class for testing AbstractProvider
+ * Stub class for testing AbstractIO
  */
-class AbstractProviderStub extends AbstractProvider
+class AbstractIOStub extends AbstractIO
 {
 
 	protected $configDefaults = [
