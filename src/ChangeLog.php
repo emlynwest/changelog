@@ -32,7 +32,6 @@ class ChangeLog
 	protected $output;
 
 	/**
-	 * @param IOInterface $input
 	 * @param ParserInterface   $parser
 	 */
 	public function __construct(ParserInterface $parser)
