@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased][unreleased]
+
+## [0.2.0][0.2.0] - 2015-01-21
 ## Added
 - Implements array access for `Log` [#1](https://github.com/stevewest/changelog/issues/1)
 - Added name param to Release constructor.
@@ -15,3 +17,4 @@
 
 [unreleased]: https://github.com/stevewest/changelog
 [0.1.0]: https://github.com/stevewest/changelog/releases/tag/0.1.0
+[0.2.0]: https://github.com/stevewest/changelog/releases/tag/0.2.0
