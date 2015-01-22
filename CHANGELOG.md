@@ -1,14 +1,16 @@
 # Change Log
 
 ## [Unreleased][unreleased]
+### Added
+- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write`
 
 ## [0.2.0][0.2.0] - 2015-01-21
-## Added
+### Added
 - Implements array access for `Log` [#1](https://github.com/stevewest/changelog/issues/1)
 - Added name param to Release constructor.
 - Added ability to write out logs to file [#2](https://github.com/stevewest/changelog/issues/2)
 
-## Changed
+### Changed
 - Renamed "providers" to "IO"
 
 ## [0.1.0][0.1.0] - 2015-01-18

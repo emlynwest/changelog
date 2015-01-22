@@ -10,6 +10,8 @@
 
 namespace ChangeLog;
 
+use LogicException;
+
 /**
  * Main logic class that ties everything together.
  */
@@ -43,9 +45,16 @@ class ChangeLog
 	 * Reads in the given log and returns the constructed Log object.
 	 *
 	 * @return Log
+	 *
+	 * @throws LogicException
 	 */
 	public function parse()
 	{
+		if ($this->input === null)
+		{
+			throw new LogicException('You must specify an IOInterface for input first.');
+		}
+
 		return $this->parser->parse(
 			$this->input->getContent()
 		);
@@ -55,9 +64,16 @@ class ChangeLog
 	 * Writes out the given Log to the chosen output.
 	 *
 	 * @param Log $log
+	 *
+	 * @throws LogicException
 	 */
 	public function write(Log $log)
 	{
+		if ($this->output === null)
+		{
+			throw new LogicException('You must specify an IOInterface for output first.');
+		}
+
 		$this->output->setContent(
 			$this->parser->render($log)
 		);

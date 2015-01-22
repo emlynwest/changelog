@@ -11,6 +11,7 @@
 namespace ChangeLog;
 
 use Codeception\TestCase\Test;
+use LogicException;
 use Mockery;
 
 /**
@@ -56,6 +57,26 @@ class ChangeLogTest extends Test
 		$changeLog = new ChangeLog($parser);
 		$changeLog->setOutput($output);
 		$changeLog->write($log);
+	}
+
+	/**
+	 * @expectedException LogicException
+	 */
+	public function testParseWithoutInput()
+	{
+		$parser = Mockery::mock('ChangeLog\ParserInterface');
+		$changeLog = new ChangeLog($parser);
+		$changeLog->parse();
+	}
+
+	/**
+	 * @expectedException LogicException
+	 */
+	public function testWriteWithoutInput()
+	{
+		$parser = Mockery::mock('ChangeLog\ParserInterface');
+		$changeLog = new ChangeLog($parser);
+		$changeLog->write(new Log);
 	}
 
 }

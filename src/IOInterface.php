@@ -30,7 +30,7 @@ interface IOInterface
 	 * Returns the content of the change log to be parsed.
 	 * The returned data should be an array of strings, one entry for each file line.
 	 *
-	 * @return string[]|null
+	 * @return array|null
 	 */
 	public function getContent();
 
