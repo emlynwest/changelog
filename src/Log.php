@@ -170,22 +170,32 @@ class Log implements IteratorAggregate, Countable
 			if ($this->hasRelease($name))
 			{
 				// if it does exist then merge the changes
-				$myRelease = $this->getRelease($name);
-				$theirRelease = $log->getRelease($name);
-
-				$changes = $this->mergeChangesArrays(
-					$theirRelease->getAllChanges(),
-					$myRelease->getAllChanges()
-				);
-				$myRelease->setAllChanges($changes);
+				$this->mergeRelease($log, $name);
 			}
 			else
 			{
 				// If the release does not exist add it
 				$this->addRelease($release);
 			}
-
 		}
+	}
+
+	/**
+	 * Combines all changes of the name of the given release from the given log into this log.
+	 *
+	 * @param Log    $log
+	 * @param string $name
+	 */
+	protected function mergeRelease(Log $log, $name)
+	{
+		$myRelease = $this->getRelease($name);
+		$theirRelease = $log->getRelease($name);
+
+		$changes = $this->mergeChangesArrays(
+			$theirRelease->getAllChanges(),
+			$myRelease->getAllChanges()
+		);
+		$myRelease->setAllChanges($changes);
 	}
 
 	/**
