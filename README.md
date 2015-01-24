@@ -16,7 +16,7 @@ committed to a git repo.
 Everything is adaptor/driver based so multiple sources, parsers and outputs can be
 used as desired. There are also plans for a cli script.
 
-## Quick Example
+## Quick Examples
 
 ### Parsing a log
 
@@ -57,3 +57,20 @@ $log = new Log;
 
 $cl->write($log);
 ```
+
+### Merging Logs
+
+Logs can be merged together to create a single change log. This includes releases and their changes.
+
+```php
+$log1 = new Log;
+// Add some releases or something
+
+$log2 = new Log;
+// Add some releases to this too
+
+$log1->mergeLog($log2);
+// $log1 now contains all releases and changes from $log2
+```
+
+Depending on your use case it might be useful to create an empty log first and merge other logs into that.

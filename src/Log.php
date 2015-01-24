@@ -156,4 +156,63 @@ class Log implements IteratorAggregate, Countable
 		$this->releases = $newOrder;
 	}
 
+	/**
+	 * Merges another Log's releases with this log.
+	 *
+	 * @param Log $log
+	 */
+	public function mergeLog(Log $log)
+	{
+		/** @var Release $release */
+		foreach ($log as $release)
+		{
+			$name = $release->getName();
+			if ($this->hasRelease($name))
+			{
+				// if it does exist then merge the changes
+				$myRelease = $this->getRelease($name);
+				$theirRelease = $log->getRelease($name);
+
+				$changes = $this->mergeChangesArrays(
+					$theirRelease->getAllChanges(),
+					$myRelease->getAllChanges()
+				);
+				$myRelease->setAllChanges($changes);
+			}
+			else
+			{
+				// If the release does not exist add it
+				$this->addRelease($release);
+			}
+
+		}
+	}
+
+	/**
+	 * Merges two sets of changes.
+	 *
+	 * @param array $left
+	 * @param array $right
+	 *
+	 * @return array
+	 */
+	protected function mergeChangesArrays($left, $right)
+	{
+		$return = $left;
+
+		foreach ($right as $type => $changes)
+		{
+			if (isset($left[$type]))
+			{
+				$return[$type] = array_merge($right[$type], $left[$type]);
+			}
+			else
+			{
+				$return[$type] = $changes;
+			}
+		}
+
+		return $return;
+	}
+
 }

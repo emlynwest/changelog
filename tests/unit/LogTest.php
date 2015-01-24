@@ -120,4 +120,45 @@ class LogTest extends Test
 		);
 	}
 
+	public function testMerge()
+	{
+		$thisRelease1 = new Release('1.0.0');
+		$thisRelease1->setAllChanges([
+			'Added' => ['Added 1', 'Added 2'],
+			'Changed' => ['Changed 1'],
+		]);
+		$this->log->addRelease($thisRelease1);
+
+		$thisRelease1 = new Release('2.0.0');
+		$this->log->addRelease($thisRelease1);
+
+		$otherLog = new Log;
+
+		$thisRelease3 = new Release('1.0.0');
+		$thisRelease3->setAllChanges([
+			'Added' => ['Added 3', 'Added 4'],
+			'Removed' => ['Removed 1'],
+		]);
+		$otherLog->addRelease($thisRelease3);
+
+		$thisRelease4 = new Release('3.0.0');
+		$otherLog->addRelease($thisRelease4);
+
+		$this->log->mergeLog($otherLog);
+
+		$this->assertTrue($this->log->hasRelease('1.0.0'));
+		$this->assertTrue($this->log->hasRelease('2.0.0'));
+		$this->assertTrue($this->log->hasRelease('3.0.0'));
+
+		$mergedRelease = $this->log->getRelease('1.0.0');
+		$this->assertEquals(
+			[
+				'Added' => ['Added 1', 'Added 2', 'Added 3', 'Added 4'],
+				'Changed' => ['Changed 1'],
+				'Removed' => ['Removed 1'],
+			],
+			$mergedRelease->getAllChanges()
+		);
+	}
+
 }
