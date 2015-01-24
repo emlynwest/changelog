@@ -2,20 +2,21 @@
 
 ## [Unreleased][unreleased]
 ### Added
-- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write`
+- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write`.
+- Releases are now sorted when being added to a Log [#12](https://github.com/stevewest/changelog/issues/12).
 
 ## [0.2.0][0.2.0] - 2015-01-21
 ### Added
-- Implements array access for `Log` [#1](https://github.com/stevewest/changelog/issues/1)
+- Implements array access for `Log` [#1](https://github.com/stevewest/changelog/issues/1).
 - Added name param to Release constructor.
-- Added ability to write out logs to file [#2](https://github.com/stevewest/changelog/issues/2)
+- Added ability to write out logs to file [#2](https://github.com/stevewest/changelog/issues/2).
 
 ### Changed
-- Renamed "providers" to "IO"
+- Renamed "providers" to "IO".
 
 ## [0.1.0][0.1.0] - 2015-01-18
 ### Added
-- Initial version
+- Initial version.
 
 [unreleased]: https://github.com/stevewest/changelog
 [0.1.0]: https://github.com/stevewest/changelog/releases/tag/0.1.0

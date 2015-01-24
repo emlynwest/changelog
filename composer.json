@@ -15,6 +15,9 @@
             "email": "steve.david.west@gmail.com"
         }
     ],
+    "require": {
+        "naneau/semver": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "ChangeLog\\": "src/"

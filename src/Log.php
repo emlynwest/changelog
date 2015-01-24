@@ -13,6 +13,8 @@ namespace ChangeLog;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Naneau\SemVer\Sort;
+use Naneau\SemVer\Version;
 use Traversable;
 
 /**
@@ -72,6 +74,7 @@ class Log implements IteratorAggregate, Countable
 	public function addRelease(Release $release)
 	{
 		$this->releases[$release->getName()] = $release;
+		$this->sortReleases();
 	}
 
 	/**
@@ -132,4 +135,25 @@ class Log implements IteratorAggregate, Countable
 	public function count()
 	{
 		return count($this->releases);
-	}}
+	}
+
+	/**
+	 * Sorts the releases inside this log in accordance with semantic versioning, latest release first.
+	 */
+	public function sortReleases()
+	{
+		$order = Sort::sort(array_keys($this->releases));
+		$order = array_reverse($order);
+
+		$newOrder = [];
+		/** @var Version $version */
+		foreach ($order as $version)
+		{
+			$index = $version->__toString();
+			$newOrder[$index] = $this->releases[$index];
+		}
+
+		$this->releases = $newOrder;
+	}
+
+}

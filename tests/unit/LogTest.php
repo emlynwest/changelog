@@ -99,8 +99,24 @@ class LogTest extends Test
 		}
 
 		$this->assertEquals(
-			['0.1.0', '0.2.0'],
+			['0.2.0', '0.1.0'],
 			$releases
+		);
+	}
+
+	public function testRevisionsAreStoredInOrder()
+	{
+		$releases = ['2.0.0', '2.1.0', '1.0.0-rc.1', '3.0.0-beta.1'];
+		$expected = ['3.0.0-beta.1', '2.1.0', '2.0.0', '1.0.0-rc.1'];
+
+		foreach ($releases as $releaseName)
+		{
+			$this->log->addRelease(new Release($releaseName));
+		}
+
+		$this->assertEquals(
+			$expected,
+			array_keys($this->log->getReleases())
 		);
 	}
 
