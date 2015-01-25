@@ -4,10 +4,6 @@
     "type": "library",
     "keywords": ["change", "log", "changelog", "parser"],
     "homepage": "https://github.com/stevewest/changelog",
-    "require-dev": {
-        "codeception/codeception": "~2.0",
-        "codeception/mockery-module": "dev-master"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -18,9 +14,17 @@
     "require": {
         "naneau/semver": "dev-master"
     },
+    "require-dev": {
+        "codeception/codeception": "~2.0",
+        "codeception/mockery-module": "dev-master",
+        "milo/github-api": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "ChangeLog\\": "src/"
         }
+    },
+    "suggest": {
+        "milo/github-api": "Allows change logs to be loaded and committed to/from a github repo."
     }
 }

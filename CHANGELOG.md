@@ -2,9 +2,12 @@
 
 ## [Unreleased][unreleased]
 ### Added
-- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write`.
 - Releases are now sorted when being added to a Log [#12](https://github.com/stevewest/changelog/issues/12).
 - Logs can now be merged [#5](https://github.com/stevewest/changelog/issues/5).
+- GitHub IO adaptor implemented [#4](https://github.com/stevewest/changelog/issues/4).
+
+### Changed
+- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write`.
 
 ## [0.2.0][0.2.0] - 2015-01-21
 ### Added

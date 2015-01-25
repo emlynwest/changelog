@@ -36,7 +36,7 @@ class String extends AbstractIO
 	}
 
 	/**
-	 * @param string|string[] $content
+	 * {@inheritdoc}
 	 */
 	public function setContent($content)
 	{
