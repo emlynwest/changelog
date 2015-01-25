@@ -50,7 +50,7 @@ class GitHubTest extends Test
 		]);
 
 		$this->assertEquals(
-			$content,
+			[$content],
 			$gitHub->getContent()
 		);
 	}

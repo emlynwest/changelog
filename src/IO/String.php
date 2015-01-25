@@ -28,9 +28,9 @@ class String extends AbstractIO
 	];
 
 	/**
-	 * @param string|string[] $content
+	 * @param string $content
 	 */
-	public function __construct($content = [])
+	public function __construct($content = '')
 	{
 		$this->setContent($content);
 	}

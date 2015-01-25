@@ -37,6 +37,7 @@ class GitHub extends AbstractIO
 
 	protected $configDefaults = [
 		'commit_message' => 'Updates change log.',
+		'line_separator' => "\n",
 	];
 
 	/**
@@ -80,7 +81,10 @@ class GitHub extends AbstractIO
 	{
 		$content = $this->requestFile();
 
-		return base64_decode($content->content);
+		return explode(
+			$this->getConfig('line_separator'),
+			base64_decode($content->content)
+		);
 	}
 
 	/**
