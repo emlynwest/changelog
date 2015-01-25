@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased][unreleased]
+
+## [0.3.0][0.3.0] - 2015-01-25
 ### Added
 - Releases are now sorted when being added to a Log [#12](https://github.com/stevewest/changelog/issues/12).
 - Logs can now be merged [#5](https://github.com/stevewest/changelog/issues/5).
