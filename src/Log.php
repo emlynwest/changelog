@@ -66,7 +66,7 @@ class Log implements IteratorAggregate, Countable
 	}
 
 	/**
-	 * Adds a release to the log.
+	 * Adds a release to the Log.
 	 * Can be used to replace existing releases too.
 	 *
 	 * @param Release $release
@@ -78,7 +78,17 @@ class Log implements IteratorAggregate, Countable
 	}
 
 	/**
-	 * Checks if the log has the named release.
+	 * Removes a release from the Log.
+	 *
+	 * @param string $name
+	 */
+	public function removeRelease($name)
+	{
+		unset($this->releases[$name]);
+	}
+
+	/**
+	 * Checks if the Log has the named Release.
 	 *
 	 * @param string $name
 	 *

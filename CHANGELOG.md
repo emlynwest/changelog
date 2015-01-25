@@ -1,15 +1,17 @@
 # Change Log
 
 ## [Unreleased][unreleased]
+### Added
+- Remove a `Release` from a `Log` [#14](https://github.com/stevewest/changelog/issues/14).
 
 ## [0.3.0][0.3.0] - 2015-01-25
 ### Added
-- Releases are now sorted when being added to a Log [#12](https://github.com/stevewest/changelog/issues/12).
-- Logs can now be merged [#5](https://github.com/stevewest/changelog/issues/5).
+- `Release`s are now sorted when being added to a `Log` [#12](https://github.com/stevewest/changelog/issues/12).
+- `Log`s can now be merged [#5](https://github.com/stevewest/changelog/issues/5).
 - GitHub IO adaptor implemented [#4](https://github.com/stevewest/changelog/issues/4).
 
 ### Changed
-- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write`.
+- `ChangeLog` now throws exceptions if input/output are not set when calling `parse()` and `write()`.
 
 ## [0.2.0][0.2.0] - 2015-01-21
 ### Added

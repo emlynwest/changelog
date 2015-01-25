@@ -75,7 +75,7 @@ class LogTest extends Test
 		);
 	}
 
-	public function testArrayAcces()
+	public function testArrayAccess()
 	{
 		$release1 = new Release;
 		$release1->setName('0.1.0');
@@ -158,6 +158,23 @@ class LogTest extends Test
 				'Removed' => ['Removed 1'],
 			],
 			$mergedRelease->getAllChanges()
+		);
+	}
+
+	public function testRemoveRelease()
+	{
+		$name = '1.0.0';
+		$release = new Release($name);
+		$this->log->addRelease($release);
+
+		$this->assertTrue(
+			$this->log->hasRelease($name)
+		);
+
+		$this->log->removeRelease($name);
+
+		$this->assertFalse(
+			$this->log->hasRelease($name)
 		);
 	}
 
