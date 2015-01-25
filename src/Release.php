@@ -10,6 +10,8 @@
 
 namespace ChangeLog;
 
+use DateTime;
+
 /**
  * Contains information about an individual release.
  */
@@ -30,6 +32,11 @@ class Release
 	 * @var string
 	 */
 	protected $link;
+
+	/**
+	 * @var DateTime
+	 */
+	protected $date;
 
 	/**
 	 * List of all changes in this release indexed by change type.
@@ -151,6 +158,22 @@ class Release
 	public function setAllChanges($changes)
 	{
 		$this->changes = $changes;
+	}
+
+	/**
+	 * @return DateTime
+	 */
+	public function getDate()
+	{
+		return $this->date;
+	}
+
+	/**
+	 * @param DateTime $date
+	 */
+	public function setDate(DateTime $date)
+	{
+		$this->date = $date;
 	}
 
 }

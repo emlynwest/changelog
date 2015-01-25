@@ -177,4 +177,17 @@ CONTENT;
 
 	}
 
+	public function testDate()
+	{
+		$releaseName = '## 1.0.0 - 2015-01-25';
+		$content = [$releaseName];
+
+		$release = $this->parser->parseRelease($content);
+
+		$this->assertEquals(
+			'2015-01-25',
+			$release->getDate()->format('Y-m-d')
+		);
+	}
+
 }

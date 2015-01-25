@@ -3,6 +3,7 @@
 ## [Unreleased][unreleased]
 ### Added
 - Remove a `Release` from a `Log` [#14](https://github.com/stevewest/changelog/issues/14).
+- Added date field to `Release` and date parsing to `KeepAChangeLog` parser. [#11](https://github.com/stevewest/changelog/issues/11)
 
 ## [0.3.0][0.3.0] - 2015-01-25
 ### Added
@@ -27,6 +28,6 @@
 - Initial version.
 
 [unreleased]: https://github.com/stevewest/changelog
-[0.1.0]: https://github.com/stevewest/changelog/releases/tag/0.1.0
-[0.2.0]: https://github.com/stevewest/changelog/releases/tag/0.2.0
 [0.3.0]: https://github.com/stevewest/changelog/releases/tag/0.3.0
+[0.2.0]: https://github.com/stevewest/changelog/releases/tag/0.2.0
+[0.1.0]: https://github.com/stevewest/changelog/releases/tag/0.1.0

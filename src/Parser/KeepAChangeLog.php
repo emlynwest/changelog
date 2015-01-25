@@ -13,6 +13,7 @@ namespace ChangeLog\Parser;
 use ChangeLog\Log;
 use ChangeLog\ParserInterface;
 use ChangeLog\Release;
+use DateTime;
 
 /**
  * Allows change logs to be parsed from the http://keepachangelog.com format.
@@ -103,7 +104,7 @@ class KeepAChangeLog implements ParserInterface
 			}
 			else if ($this->startsWith($line, '##'))
 			{
-				$release->setName($this->trimHashes($line));
+				$this->handleName($release, $line);
 				$nameSet = true;
 			}
 			else
@@ -116,6 +117,21 @@ class KeepAChangeLog implements ParserInterface
 
 		$release->setAllChanges($types);
 		return $release;
+	}
+
+	protected function handleName(Release $release, $line)
+	{
+		$parts = explode('-', $line);
+
+		$release->setName($this->trimHashes($parts[0]));
+
+		if (count($parts) > 1)
+		{
+			$dateString = ltrim(substr($line, strlen($parts[0])), ' -');
+			// Parse the date and assign that to the release.
+			$date = DateTime::createFromFormat('Y-m-d', $dateString);
+			$release->setDate($date);
+		}
 	}
 
 	/**

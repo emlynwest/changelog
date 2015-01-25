@@ -11,6 +11,7 @@
 namespace ChangeLog;
 
 use Codeception\TestCase\Test;
+use DateTime;
 
 /**
  * Tests for Release
@@ -101,6 +102,17 @@ class ReleaseTest extends Test
 		$this->assertEquals(
 			$newFixes,
 			$this->release->getChanges('fixed')
+		);
+	}
+
+	public function testGetSetDate()
+	{
+		$date = new DateTime;
+
+		$this->release->setDate($date);
+		$this->assertEquals(
+			$date,
+			$this->release->getDate()
 		);
 	}
 
