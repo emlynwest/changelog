@@ -3,7 +3,8 @@
 ## [Unreleased][unreleased]
 ### Added
 - Remove a `Release` from a `Log` [#14](https://github.com/stevewest/changelog/issues/14).
-- Added date field to `Release` and date parsing to `KeepAChangeLog` parser. [#11](https://github.com/stevewest/changelog/issues/11)
+- Added date field to `Release` and date parsing to `KeepAChangeLog` parser [#11](https://github.com/stevewest/changelog/issues/11).
+- Added support to `KeepAChangeLog` to look for yanked releases [#10](https://github.com/stevewest/changelog/issues/10).
 
 ## [0.3.0][0.3.0] - 2015-01-25
 ### Added

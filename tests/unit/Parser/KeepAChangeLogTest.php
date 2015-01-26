@@ -190,4 +190,25 @@ CONTENT;
 		);
 	}
 
+	public function testYanked()
+	{
+		$releaseName = '## 1.0.0 - 2015-01-25 [YANKED]';
+		$content = [$releaseName];
+
+		$release = $this->parser->parseRelease($content);
+
+		$this->assertTrue(
+			$release->isYanked()
+		);
+
+		$releaseName = '## 1.0.0 - 2015-01-25 [yanked]';
+		$content = [$releaseName];
+
+		$release = $this->parser->parseRelease($content);
+
+		$this->assertTrue(
+			$release->isYanked()
+		);
+	}
+
 }

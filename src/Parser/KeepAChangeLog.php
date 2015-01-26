@@ -119,19 +119,30 @@ class KeepAChangeLog implements ParserInterface
 		return $release;
 	}
 
+	/**
+	 * Pulls out the needed information from a Release title and assigns that to the
+	 * given release.
+	 *
+	 * @param Release $release
+	 * @param string  $line
+	 */
 	protected function handleName(Release $release, $line)
 	{
+		if (preg_match('/\[YANKED\]$/i', $line))
+		{
+			$release->setYanked(true);
+		}
+
+		$matches = [];
+		if (preg_match('/[0-9]{4,}-[0-9]{2,}-[0-9]{2,}/', $line, $matches))
+		{
+			$date = DateTime::createFromFormat('Y-m-d', $matches[0]);
+			$release->setDate($date);
+		}
+
 		$parts = explode('-', $line);
 
 		$release->setName($this->trimHashes($parts[0]));
-
-		if (count($parts) > 1)
-		{
-			$dateString = ltrim(substr($line, strlen($parts[0])), ' -');
-			// Parse the date and assign that to the release.
-			$date = DateTime::createFromFormat('Y-m-d', $dateString);
-			$release->setDate($date);
-		}
 	}
 
 	/**
@@ -152,6 +163,13 @@ class KeepAChangeLog implements ParserInterface
 		return $content;
 	}
 
+	/**
+	 * Converts a Release into its text representation.
+	 *
+	 * @param Release $release
+	 *
+	 * @return string
+	 */
 	public function renderRelease(Release $release)
 	{
 		$content = "\n## {$release->getName()}\n";
@@ -164,6 +182,14 @@ class KeepAChangeLog implements ParserInterface
 		return substr($content, 0, strlen($content)-1);
 	}
 
+	/**
+	 * Converts a list of changes with a given type back into text.
+	 *
+	 * @param string $type
+	 * @param array  $changes
+	 *
+	 * @return string
+	 */
 	public function renderType($type, $changes)
 	{
 		$content = '';
