@@ -13,6 +13,7 @@ namespace ChangeLog\Parser;
 use ChangeLog\Log;
 use ChangeLog\Release;
 use Codeception\TestCase\Test;
+use DateTime;
 
 /**
  * Tests for KeepAChangeLog
@@ -190,6 +191,18 @@ CONTENT;
 		);
 	}
 
+	public function testDateRender()
+	{
+		$release = new Release('1.0.0');
+		$release->setDate(DateTime::createFromFormat('Y-m-d', '2015-01-25'));
+
+		$result = $this->parser->renderRelease($release);
+		$this->assertEquals(
+			"\n## 1.0.0 - 2015-01-25",
+			$result
+		);
+	}
+
 	public function testYanked()
 	{
 		$releaseName = '## 1.0.0 - 2015-01-25 [YANKED]';
@@ -201,6 +214,16 @@ CONTENT;
 			$release->isYanked()
 		);
 
+		$this->assertEquals(
+			'2015-01-25',
+			$release->getDate()->format('Y-m-d')
+		);
+
+		$this->assertEquals(
+			'1.0.0',
+			$release->getName()
+		);
+
 		$releaseName = '## 1.0.0 - 2015-01-25 [yanked]';
 		$content = [$releaseName];
 
@@ -208,6 +231,18 @@ CONTENT;
 
 		$this->assertTrue(
 			$release->isYanked()
+		);
+	}
+
+	public function testYankedRender()
+	{
+		$release = new Release('1.0.0');
+		$release->setYanked(true);
+
+		$result = $this->parser->renderRelease($release);
+		$this->assertEquals(
+			"\n## 1.0.0 [YANKED]",
+			$result
 		);
 	}
 

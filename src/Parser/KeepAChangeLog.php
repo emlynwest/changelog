@@ -142,7 +142,7 @@ class KeepAChangeLog implements ParserInterface
 
 		$parts = explode('-', $line);
 
-		$release->setName($this->trimHashes($parts[0]));
+		$release->setName(trim($this->trimHashes($parts[0])));
 	}
 
 	/**
@@ -172,7 +172,20 @@ class KeepAChangeLog implements ParserInterface
 	 */
 	public function renderRelease(Release $release)
 	{
-		$content = "\n## {$release->getName()}\n";
+		$content = "\n## {$release->getName()}";
+
+		$date = $release->getDate();
+		if ($date !== null)
+		{
+			$content .= ' - '.$date->format('Y-m-d');
+		}
+
+		if ($release->isYanked())
+		{
+			$content .= ' [YANKED]';
+		}
+
+		$content .= "\n";
 
 		foreach ($release->getAllChanges() as $type => $changes)
 		{
