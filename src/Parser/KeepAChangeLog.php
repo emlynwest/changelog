@@ -137,7 +137,10 @@ class KeepAChangeLog implements ParserInterface
 		if (preg_match('/[0-9]{4,}-[0-9]{2,}-[0-9]{2,}/', $line, $matches))
 		{
 			$date = DateTime::createFromFormat('Y-m-d', $matches[0]);
-			$release->setDate($date);
+			if ($date)
+			{
+				$release->setDate($date);
+			}
 		}
 
 		$parts = explode('-', $line);
@@ -174,16 +177,8 @@ class KeepAChangeLog implements ParserInterface
 	{
 		$content = "\n## {$release->getName()}";
 
-		$date = $release->getDate();
-		if ($date !== null)
-		{
-			$content .= ' - '.$date->format('Y-m-d');
-		}
-
-		if ($release->isYanked())
-		{
-			$content .= ' [YANKED]';
-		}
+		$content .= $this->addDate($release);
+		$content .= $this->addYanked($release);
 
 		$content .= "\n";
 
@@ -214,6 +209,45 @@ class KeepAChangeLog implements ParserInterface
 		}
 
 		return $content . "\n";
+	}
+
+	/**
+	 * Adds the date to a Release title for rendering if the Release has a date.
+	 *
+	 * @param Release $release
+	 *
+	 * @return string
+	 */
+	protected function addDate(Release $release)
+	{
+		$content = '';
+		$date = $release->getDate();
+
+		if ($date !== null)
+		{
+			$content = ' - ' . $date->format('Y-m-d');
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Returns the YANKED tag if needed
+	 *
+	 * @param Release $release
+	 *
+	 * @return string
+	 */
+	protected function addYanked(Release $release)
+	{
+		$content = '';
+
+		if ($release->isYanked())
+		{
+			$content = ' [YANKED]';
+		}
+
+		return $content;
 	}
 
 }
