@@ -32,6 +32,8 @@ class KeepAChangeLog implements ParserInterface
 	{
 		$log = new Log;
 		$description = [];
+		$links = [];
+		$matches = [];
 
 		$line = ltrim(current($content));
 		while ($line)
@@ -45,6 +47,13 @@ class KeepAChangeLog implements ParserInterface
 				$release = $this->parseRelease($content);
 				$log->addRelease($release);
 			}
+			else if(preg_match('/\[(.+)\] (.+)/', $line, $matches))
+			{
+				if (count($matches) >= 3)
+				{
+					$links[$matches[1]] = $matches[2];
+				}
+			}
 			else
 			{
 				$description[] = $line;
@@ -54,6 +63,20 @@ class KeepAChangeLog implements ParserInterface
 		}
 
 		$log->setDescription(implode("\n", $description));
+
+		// Assign the releases their real links
+		/** @var Release $release */
+		foreach ($log as $release)
+		{
+			$link = null;
+			$linkName = $release->getLink();
+			if (isset($links[$linkName]))
+			{
+				$link = $links[$linkName];
+			}
+			$release->setLink($link);
+		}
+
 		return $log;
 	}
 
@@ -69,6 +92,14 @@ class KeepAChangeLog implements ParserInterface
 		return ltrim($line, "\t\n\r\0\x0B# ");
 	}
 
+	/**
+	 * Returns true if $haystack starts with $needle.
+	 *
+	 * @param $haystack
+	 * @param $needle
+	 *
+	 * @return bool
+	 */
 	public function startsWith($haystack, $needle)
 	{
 		return (substr($haystack, 0, strlen($needle)) === $needle);
@@ -128,11 +159,57 @@ class KeepAChangeLog implements ParserInterface
 	 */
 	protected function handleName(Release $release, $line)
 	{
+		$this->setName($release, $line);
+		$this->setDate($release, $line);
+		$this->setLink($release, $line);
+		$this->setYanked($release, $line);
+	}
+
+	/**
+	 * Extracts and sets the name of the link if there is one.
+	 *
+	 * @param Release $release
+	 * @param string  $line
+	 */
+	protected function setLink(Release $release, $line)
+	{
+		$matches = [];
+
+		if (preg_match('/^## \[([\w\.-\.]+)\](?:\[(\w+)\])?/', $line, $matches))
+		{
+			if (count($matches) >= 3)
+			{
+				$release->setLink($matches[2]);
+			}
+			else
+			{
+				$release->setLink($matches[1]);
+			}
+		}
+	}
+
+	/**
+	 * Extracts and sets the yanked flag.
+	 *
+	 * @param Release $release
+	 * @param string  $line
+	 */
+	protected function setYanked(Release $release, $line)
+	{
 		if (preg_match('/\[YANKED\]$/i', $line))
 		{
 			$release->setYanked(true);
 		}
+	}
 
+	/**
+	 * Extracts and sets the release Date.
+	 *
+	 * @param Release $release
+	 * @param string  $line
+	 */
+	protected function setDate(Release $release, $line)
+	{
 		$matches = [];
 		if (preg_match('/[0-9]{4,}-[0-9]{2,}-[0-9]{2,}/', $line, $matches))
 		{
@@ -142,10 +219,21 @@ class KeepAChangeLog implements ParserInterface
 				$release->setDate($date);
 			}
 		}
+	}
 
-		$parts = explode('-', $line);
-
-		$release->setName(trim($this->trimHashes($parts[0])));
+	/**
+	 * Extracts and sets the Release name.
+	 *
+	 * @param Release $release
+	 * @param string  $line
+	 */
+	protected function setName(Release $release, $line)
+	{
+		$matches = [];
+		if (preg_match('/([\w\.-]{1,})/', $line, $matches))
+		{
+			$release->setName($matches[0]);
+		}
 	}
 
 	/**
@@ -156,13 +244,25 @@ class KeepAChangeLog implements ParserInterface
 		$content = "# {$log->getTitle()}\n" .
 			"{$log->getDescription()}\n";
 
+		$links = '';
+
 		/** @var Release $release */
 		foreach ($log as $release)
 		{
 			$content .= $this->renderRelease($release);
+
+			$link = $release->getLink();
+			if ($link !== null)
+			{
+				$links .= "[{$release->getName()}] $link\n";
+			}
 		}
 
-		// Shave off the last extra \n before returning
+		if ($links !== '')
+		{
+			$content .= "\n\n" . $links;
+		}
+
 		return $content;
 	}
 
@@ -175,7 +275,14 @@ class KeepAChangeLog implements ParserInterface
 	 */
 	public function renderRelease(Release $release)
 	{
-		$content = "\n## {$release->getName()}";
+		$name = $release->getName();
+
+		if ($release->getLink() !== null)
+		{
+			$name = "[$name]";
+		}
+
+		$content = "\n## $name";
 
 		$content .= $this->addDate($release);
 		$content .= $this->addYanked($release);
@@ -222,15 +329,12 @@ class KeepAChangeLog implements ParserInterface
 	{
 		$content = '';
 		$date = $release->getDate();
-
 		if ($date !== null)
 		{
 			$content = ' - ' . $date->format('Y-m-d');
 		}
-
 		return $content;
 	}
-
 	/**
 	 * Returns the YANKED tag if needed
 	 *
@@ -241,12 +345,10 @@ class KeepAChangeLog implements ParserInterface
 	protected function addYanked(Release $release)
 	{
 		$content = '';
-
 		if ($release->isYanked())
 		{
 			$content = ' [YANKED]';
 		}
-
 		return $content;
 	}
 

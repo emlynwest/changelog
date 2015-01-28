@@ -246,4 +246,56 @@ CONTENT;
 		);
 	}
 
+	public function testParseLinks()
+	{
+		$content = [
+			'# Change log',
+			'## [1.1.0][a]',
+			'## [1.0.0]',
+			'',
+			'[a] http://google.com',
+			'[1.0.0] http://fuelphp.com',
+		];
+
+		$log = $this->parser->parse($content);
+
+		$this->assertEquals(
+			'http://google.com',
+			$log->getRelease('1.1.0')->getLink()
+		);
+
+		$this->assertEquals(
+			'http://fuelphp.com',
+			$log->getRelease('1.0.0')->getLink()
+		);
+	}
+
+	public function testRenderLink()
+	{
+		$log = new Log();
+		$log->setTitle('Change log');
+		$log->setDescription('My change log');
+
+		$release1 = new Release('1.0.0');
+		$release1->setLink('http://fuelphp.com');
+		$log->addRelease($release1);
+
+		$expected = <<<'EXPECTED'
+# Change log
+My change log
+
+## [1.0.0]
+
+[1.0.0] http://fuelphp.com
+
+EXPECTED;
+
+		$result = $this->parser->render($log);
+
+		$this->assertEquals(
+			$expected,
+			$result
+		);
+	}
+
 }
