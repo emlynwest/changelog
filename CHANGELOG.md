@@ -10,6 +10,9 @@
 ### Fixed
 - Fixed sorting releases with a release of the title "unreleased [#15](https://github.com/stevewest/changelog/issues/15).
 
+### Changed
+- Splits `Parser` into `Renderer`s and `Parser`s to better separate the functionality.
+
 ## [0.3.0] - 2015-01-25
 ### Added
 - `Release`s are now sorted when being added to a `Log` [#12](https://github.com/stevewest/changelog/issues/12).

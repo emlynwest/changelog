@@ -33,7 +33,8 @@ class ChangeLogTest extends Test
 			->once()
 			->with($content);
 
-		$changeLog = new ChangeLog($parser);
+		$changeLog = new ChangeLog;
+		$changeLog->setParser($parser);
 		$changeLog->setInput($input);
 		$changeLog->parse();
 	}
@@ -43,8 +44,8 @@ class ChangeLogTest extends Test
 		$log = new Log;
 		$parsed = 'foobar';
 
-		$parser = Mockery::mock('ChangeLog\ParserInterface');
-		$parser->shouldReceive('render')
+		$renderer = Mockery::mock('ChangeLog\ParserInterface');
+		$renderer->shouldReceive('render')
 			->once()
 			->with($log)
 			->andReturn($parsed);
@@ -54,7 +55,8 @@ class ChangeLogTest extends Test
 			->once()
 			->with($parsed);
 
-		$changeLog = new ChangeLog($parser);
+		$changeLog = new ChangeLog;
+		$changeLog->setRenderer($renderer);
 		$changeLog->setOutput($output);
 		$changeLog->write($log);
 	}
@@ -74,8 +76,9 @@ class ChangeLogTest extends Test
 	 */
 	public function testWriteWithoutInput()
 	{
-		$parser = Mockery::mock('ChangeLog\ParserInterface');
-		$changeLog = new ChangeLog($parser);
+		$parser = Mockery::mock('ChangeLog\RenderInterface');
+		$changeLog = new ChangeLog();
+		$changeLog->setRenderer($parser);
 		$changeLog->write(new Log);
 	}
 

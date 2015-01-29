@@ -13,16 +13,16 @@ namespace ChangeLog;
 /**
  * Standard interface for change log parsers.
  */
-interface ParserInterface
+interface RenderInterface
 {
 
 	/**
-	 * Takes the given content and parses it into a populated Log object.
+	 * Takes the given log and turns that back into a text change log.
 	 *
-	 * @param string[] $content
+	 * @param Log $log
 	 *
-	 * @return Log
+	 * @return string
 	 */
-	public function parse($content);
+	public function render(Log $log);
 
 }

@@ -29,7 +29,8 @@ $input = new \ChangeLog\IO\File([
 
 $parser = new \ChangeLog\Parser\KeepAChangeLog();
 
-$cl = new \ChangeLog\ChangeLog($parser);
+$cl = new \ChangeLog\ChangeLog;
+$cl->setParser($parser);
 $cl->setInput($input);
 
 $log = $cl->parse();
@@ -47,9 +48,10 @@ $output = new \ChangeLog\IO\File([
 	'file' => 'path/to/changelog.md'
 ]);
 
-$parser = new \ChangeLog\Parser\KeepAChangeLog();
+$renderer = new \ChangeLog\Renderer\KeepAChangeLog();
 
-$cl = new \ChangeLog\ChangeLog($parser);
+$cl = new \ChangeLog\ChangeLog;
+$cl->setRenderer($renderer);
 $cl->setOutput($output);
 
 $log = new Log;

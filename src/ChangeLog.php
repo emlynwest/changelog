@@ -24,6 +24,11 @@ class ChangeLog
 	protected $parser;
 
 	/**
+	 * @var RenderInterface
+	 */
+	protected $renderer;
+
+	/**
 	 * @var IOInterface
 	 */
 	protected $input;
@@ -32,14 +37,6 @@ class ChangeLog
 	 * @var IOInterface
 	 */
 	protected $output;
-
-	/**
-	 * @param ParserInterface   $parser
-	 */
-	public function __construct(ParserInterface $parser)
-	{
-		$this->parser = $parser;
-	}
 
 	/**
 	 * Reads in the given log and returns the constructed Log object.
@@ -75,7 +72,7 @@ class ChangeLog
 		}
 
 		$this->output->setContent(
-			$this->parser->render($log)
+			$this->renderer->render($log)
 		);
 	}
 
@@ -97,6 +94,26 @@ class ChangeLog
 	public function setOutput($output)
 	{
 		$this->output = $output;
+	}
+
+	/**
+	 * Sets the adaptor to render with.
+	 *
+	 * @param RenderInterface $renderer
+	 */
+	public function setRenderer($renderer)
+	{
+		$this->renderer = $renderer;
+	}
+
+	/**
+	 * Sets the adaptor to parse with.
+	 *
+	 * @param ParserInterface $parser
+	 */
+	public function setParser($parser)
+	{
+		$this->parser = $parser;
 	}
 
 }
