@@ -7,6 +7,9 @@
 - Added support to `KeepAChangeLog` to look for yanked releases [#10](https://github.com/stevewest/changelog/issues/10).
 - Added messy link handling to `KeepAChangeLog` [#9](https://github.com/stevewest/changelog/issues/9).
 
+### Fixed
+- Fixed sorting releases with a release of the title "unreleased [#15](https://github.com/stevewest/changelog/issues/15).
+
 ## [0.3.0] - 2015-01-25
 ### Added
 - `Release`s are now sorted when being added to a `Log` [#12](https://github.com/stevewest/changelog/issues/12).

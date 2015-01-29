@@ -57,12 +57,13 @@ class Log implements IteratorAggregate, Countable
 	 */
 	public function getRelease($name)
 	{
-		if ( ! $this->hasRelease($name))
+		$key = strtolower($name);
+		if ( ! $this->hasRelease($key))
 		{
 			return null;
 		}
 
-		return $this->releases[$name];
+		return $this->releases[$key];
 	}
 
 	/**
@@ -73,7 +74,8 @@ class Log implements IteratorAggregate, Countable
 	 */
 	public function addRelease(Release $release)
 	{
-		$this->releases[$release->getName()] = $release;
+		$name = strtolower($release->getName());
+		$this->releases[$name] = $release;
 		$this->sortReleases();
 	}
 
@@ -84,7 +86,8 @@ class Log implements IteratorAggregate, Countable
 	 */
 	public function removeRelease($name)
 	{
-		unset($this->releases[$name]);
+		$key = strtolower($name);
+		unset($this->releases[$key]);
 	}
 
 	/**
@@ -96,7 +99,8 @@ class Log implements IteratorAggregate, Countable
 	 */
 	public function hasRelease($name)
 	{
-		return isset($this->releases[$name]);
+		$key = strtolower($name);
+		return isset($this->releases[$key]);
 	}
 
 	/**
@@ -152,6 +156,14 @@ class Log implements IteratorAggregate, Countable
 	 */
 	public function sortReleases()
 	{
+		// If there is an unreleased release pull that out and sort the rest
+		$unreleased = null;
+		if (isset($this->releases['unreleased']))
+		{
+			$unreleased = $this->releases['unreleased'];
+			unset($this->releases['unreleased']);
+		}
+
 		$order = Sort::sort(array_keys($this->releases));
 		$order = array_reverse($order);
 
@@ -161,6 +173,11 @@ class Log implements IteratorAggregate, Countable
 		{
 			$index = $version->__toString();
 			$newOrder[$index] = $this->releases[$index];
+		}
+
+		if ($unreleased !== null)
+		{
+			$newOrder = ['unreleased' => $unreleased] + $newOrder;
 		}
 
 		$this->releases = $newOrder;

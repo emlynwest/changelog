@@ -178,4 +178,21 @@ class LogTest extends Test
 		);
 	}
 
+	/**
+	 * @link https://github.com/stevewest/changelog/issues/15
+	 */
+	public function testSortWithUnreleased()
+	{
+		$release1 = new Release('0.1.0');
+		$release2 = new Release('Unreleased');
+
+		$this->log->addRelease($release1);
+		$this->log->addRelease($release2);
+
+		$this->assertEquals(
+			['unreleased' => $release2, '0.1.0' => $release1],
+			$this->log->getReleases()
+		);
+	}
+
 }
