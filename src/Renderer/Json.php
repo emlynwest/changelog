@@ -14,6 +14,9 @@ use ChangeLog\Log;
 use ChangeLog\Release;
 use ChangeLog\RenderInterface;
 
+/**
+ * Allows change logs to be rendered to json
+ */
 class Json implements RenderInterface
 {
 

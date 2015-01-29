@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+	<title>Change Log</title>
+	<description>A log for changes!</description>
+	<releases>
+		<release>
+			<name>1.0.0</name>
+			<link>http://fuelphp.com</link>
+			<date>2015-01-29</date>
+			<changes>
+				<type name="Fixed">
+					<change>fixed 1</change>
+					<change>fixed 2</change>
+				</type>
+				<type name="Changed">
+					<change>changed 1</change>
+				</type>
+			</changes>
+		</release>
+		<release>
+			<name>0.1.0</name>
+			<link>http://google.com</link>
+			<linkName>foobar</linkName>
+			<date>2015-01-20</date>
+			<changes>
+				<type name="Changed">
+					<change>changed 2</change>
+				</type>
+			</changes>
+		</release>
+	</releases>
+</log>
