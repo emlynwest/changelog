@@ -1,0 +1,32 @@
+{
+	"title": "Change Log",
+	"description": "A log for changes!",
+	"releases": {
+		"1.0.0": {
+			"name": "1.0.0",
+			"link": "http://fuelphp.com",
+			"linkName": null,
+			"date": "2015-01-29",
+			"changes": {
+				"Fixed": [
+					"fixed 1",
+					"fixed 2"
+				],
+				"Changed": [
+					"changed 1"
+				]
+			}
+		},
+		"0.1.0": {
+			"name": "0.1.0",
+			"link": "http://google.com",
+			"linkName": "foobar",
+			"date": "2015-01-20",
+			"changes": {
+				"Changed": [
+					"changed 2"
+				]
+			}
+		}
+	}
+}

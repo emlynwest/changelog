@@ -6,6 +6,7 @@
 - Added date field to `Release` and date parsing to `KeepAChangeLog` parser [#11](https://github.com/stevewest/changelog/issues/11).
 - Added support to `KeepAChangeLog` to look for yanked releases [#10](https://github.com/stevewest/changelog/issues/10).
 - Added messy link handling to `KeepAChangeLog` [#9](https://github.com/stevewest/changelog/issues/9).
+- Json renderer [#7](https://github.com/stevewest/changelog/issues/7).
 
 ### Fixed
 - Fixed sorting releases with a release of the title "unreleased [#15](https://github.com/stevewest/changelog/issues/15).
