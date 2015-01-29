@@ -37,23 +37,33 @@ class Json implements RenderInterface
 		 */
 		foreach ($log as $name => $release)
 		{
-			$date = null;
-
-			if ($release->getDate() !== null)
-			{
-				$date = $release->getDate()->format('Y-m-d');
-			}
-
-			$content['releases'][$name] = [
-				'name' => $release->getName(),
-				'link' => $release->getLink(),
-				'linkName' => $release->getLinkName(),
-				'date' => $date,
-				'changes' => $release->getAllChanges(),
-			];
+			$content['releases'][$name] = $this->renderRelease($release);
 		}
 
 		return json_encode($content);
+	}
+
+	/**
+	 * @param Release $release
+	 *
+	 * @return array
+	 */
+	protected function renderRelease(Release $release)
+	{
+		$date = null;
+
+		if ($release->getDate() !== null)
+		{
+			$date = $release->getDate()->format('Y-m-d');
+		}
+
+		return [
+			'name' => $release->getName(),
+			'link' => $release->getLink(),
+			'linkName' => $release->getLinkName(),
+			'date' => $date,
+			'changes' => $release->getAllChanges(),
+		];
 	}
 
 }

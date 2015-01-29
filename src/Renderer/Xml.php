@@ -36,24 +36,11 @@ class Xml implements RenderInterface
 		/** @var Release $release */
 		foreach ($log as $release)
 		{
-			$releaseNode = $releases->addChild('release');
-			$releaseNode->addChild('name', $release->getName());
-			$releaseNode->addChild('link', $release->getLink());
-
-			if ($release->getLinkName() !== null)
-			{
-				$releaseNode->addChild('linkName', $release->getLinkName());
-			}
-
-			if ($release->getDate() !== null)
-			{
-				$releaseNode->addChild('date', $release->getDate()->format('Y-m-d'));
-			}
-
-			$this->addChanges($releaseNode, $release);
+			$this->renderRelease($releases, $release);
 		}
 
-		return $xml->asXML();
+		$xml = $xml->asXML();
+		return ($xml !== false) ? $xml : '' ;
 	}
 
 	/**
@@ -76,6 +63,32 @@ class Xml implements RenderInterface
 				$typeNode->addChild('change', $change);
 			}
 		}
+	}
+
+	/**
+	 * @param SimpleXMLElement $releases
+	 * @param Release          $release
+	 */
+	protected function renderRelease($releases, $release)
+	{
+		$releaseNode = $releases->addChild('release');
+		$releaseNode->addChild('name', $release->getName());
+		$releaseNode->addChild('link', $release->getLink());
+
+		if ($release->getLinkName() !== null)
+		{
+			$releaseNode->addChild('linkName', $release->getLinkName());
+		}
+
+		if ($release->getDate() !== null)
+		{
+			$releaseNode->addChild('date',
+				$release->getDate()
+					->format('Y-m-d')
+			);
+		}
+
+		$this->addChanges($releaseNode, $release);
 	}
 
 }
