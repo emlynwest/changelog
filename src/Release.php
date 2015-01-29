@@ -46,6 +46,13 @@ class Release
 	protected $changes = [];
 
 	/**
+	 * Optional link name.
+	 *
+	 * @var string
+	 */
+	protected $linkName;
+
+	/**
 	 * @param string $name
 	 */
 	public function __construct($name = null)
@@ -174,6 +181,22 @@ class Release
 	public function setDate(DateTime $date)
 	{
 		$this->date = $date;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLinkName()
+	{
+		return $this->linkName;
+	}
+
+	/**
+	 * @param string $linkName
+	 */
+	public function setLinkName($linkName)
+	{
+		$this->linkName = $linkName;
 	}
 
 }

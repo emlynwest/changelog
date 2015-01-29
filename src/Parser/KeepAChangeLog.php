@@ -180,6 +180,7 @@ class KeepAChangeLog implements ParserInterface
 			if (count($matches) >= 3)
 			{
 				$release->setLink($matches[2]);
+				$release->setLinkName($matches[2]);
 			}
 			else
 			{

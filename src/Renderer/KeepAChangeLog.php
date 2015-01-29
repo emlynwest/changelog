@@ -34,12 +34,7 @@ class KeepAChangeLog implements RenderInterface
 		foreach ($log as $release)
 		{
 			$content .= $this->renderRelease($release);
-
-			$link = $release->getLink();
-			if ($link !== null)
-			{
-				$links .= "[{$release->getName()}] $link\n";
-			}
+			$links .= $this->createLink($release);
 		}
 
 		if ($links !== '')
@@ -48,6 +43,32 @@ class KeepAChangeLog implements RenderInterface
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Creates the needed link text for a Release.
+	 *
+	 * @param Release $release
+	 *
+	 * @return string
+	 */
+	protected function createLink(Release $release)
+	{
+		$line = '';
+
+		$link = $release->getLink();
+
+		if ($link !== null)
+		{
+			$linkName = $release->getLinkName();
+			$name = $release->getName();
+
+			$reference = ($linkName === null) ? $name : $linkName;
+
+			$line = "[$reference] $link\n";
+		}
+
+		return $line;
 	}
 
 	/**
@@ -64,6 +85,11 @@ class KeepAChangeLog implements RenderInterface
 		if ($release->getLink() !== null)
 		{
 			$name = "[$name]";
+		}
+
+		if ($release->getLinkName() !== null)
+		{
+			$name .= "[{$release->getLinkName()}]";
 		}
 
 		$content = "\n## $name";

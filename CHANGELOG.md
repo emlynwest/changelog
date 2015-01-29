@@ -9,6 +9,7 @@
 
 ### Fixed
 - Fixed sorting releases with a release of the title "unreleased [#15](https://github.com/stevewest/changelog/issues/15).
+- Named links are now parsed and rendered correctly.
 
 ### Changed
 - Splits `Parser` into `Renderer`s and `Parser`s to better separate the functionality.

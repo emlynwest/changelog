@@ -116,4 +116,15 @@ class ReleaseTest extends Test
 		);
 	}
 
+	public function testGetSetLinkName()
+	{
+		$name = 'abc';
+
+		$this->release->setLinkName($name);
+		$this->assertEquals(
+			$name,
+			$this->release->getLinkName()
+		);
+	}
+
 }

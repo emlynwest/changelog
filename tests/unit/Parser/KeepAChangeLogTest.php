@@ -193,6 +193,11 @@ class KeepAChangeLogTest extends Test
 		);
 
 		$this->assertEquals(
+			'a',
+			$log->getRelease('1.1.0')->getLinkName()
+		);
+
+		$this->assertEquals(
 			'http://fuelphp.com',
 			$log->getRelease('1.0.0')->getLink()
 		);

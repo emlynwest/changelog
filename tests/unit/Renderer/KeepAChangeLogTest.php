@@ -110,13 +110,20 @@ CONTENT;
 		$release1->setLink('http://fuelphp.com');
 		$log->addRelease($release1);
 
+		$release1 = new Release('0.1.0');
+		$release1->setLink('http://google.com');
+		$release1->setLinkName('a');
+		$log->addRelease($release1);
+
 		$expected = <<<'EXPECTED'
 # Change log
 My change log
 
 ## [1.0.0]
+## [0.1.0][a]
 
 [1.0.0] http://fuelphp.com
+[a] http://google.com
 
 EXPECTED;
 
