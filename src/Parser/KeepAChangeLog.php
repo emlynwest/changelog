@@ -65,17 +65,7 @@ class KeepAChangeLog implements ParserInterface
 		$log->setDescription(implode("\n", $description));
 
 		// Assign the releases their real links
-		/** @var Release $release */
-		foreach ($log as $release)
-		{
-			$link = null;
-			$linkName = $release->getLink();
-			if (isset($links[$linkName]))
-			{
-				$link = $links[$linkName];
-			}
-			$release->setLink($link);
-		}
+		$this->assignLinks($log, $links);
 
 		return $log;
 	}
@@ -234,6 +224,27 @@ class KeepAChangeLog implements ParserInterface
 		if (preg_match('/([\w\.-]{1,})/', $line, $matches))
 		{
 			$release->setName($matches[0]);
+		}
+	}
+
+	/**
+	 * @param $log
+	 * @param $links
+	 *
+	 * @since
+	 */
+	protected function assignLinks($log, $links)
+	{
+		/** @var Release $release */
+		foreach ($log as $release)
+		{
+			$link = null;
+			$linkName = $release->getLink();
+			if (isset($links[$linkName]))
+			{
+				$link = $links[$linkName];
+			}
+			$release->setLink($link);
 		}
 	}
 
