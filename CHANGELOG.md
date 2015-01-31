@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Removed
+- `IO\File` no longer does an `is_file()` check to allow for remote url fetching [#13](https://github.com/stevewest/changelog/issues/13).
 
 ## [0.4.0] - 2015-01-29
 ### Added

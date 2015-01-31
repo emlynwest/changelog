@@ -65,9 +65,9 @@ class File extends AbstractIO
 	{
 		$file = $this->getConfig('file');
 
-		if ( ! $file || ! is_file($file))
+		if ( ! $file)
 		{
-			throw new InvalidArgumentException('File not specified or invalid.');
+			throw new InvalidArgumentException('File not specified.');
 		}
 
 		return $file;

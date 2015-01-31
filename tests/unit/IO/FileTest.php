@@ -50,15 +50,6 @@ class FileTest extends Test
 		$this->file->getContent();
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
-	public function testInvalidFile()
-	{
-		$this->file->setConfig(['file' => 'foobar']);
-		$this->file->getContent();
-	}
-
 	public function testSetContent()
 	{
 		$content = 'foobar';
