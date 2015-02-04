@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [1.0.0]
 ### Removed
 - `IO\File` no longer does an `is_file()` check to allow for remote url fetching [#13](https://github.com/stevewest/changelog/issues/13).
 
@@ -42,6 +44,7 @@
 - Initial version.
 
 [Unreleased]: https://github.com/stevewest/changelog
+[1.0.0]: https://github.com/stevewest/changelog/releases/tag/1.0.0
 [0.4.0]: https://github.com/stevewest/changelog/releases/tag/0.4.0
 [0.3.0]: https://github.com/stevewest/changelog/releases/tag/0.3.0
 [0.2.0]: https://github.com/stevewest/changelog/releases/tag/0.2.0
