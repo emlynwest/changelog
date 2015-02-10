@@ -25,6 +25,11 @@
             "ChangeLog\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ChangeLog\\Stub\\": "tests/stubs"
+        }
+    },
     "suggest": {
         "milo/github-api": "Allows change logs to be loaded and committed to/from a github repo.",
         "league/flysystem": "Allows change logs to be read and written to pretty much everywhere."
