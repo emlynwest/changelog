@@ -15,6 +15,7 @@ It is possible to read and write logs from/to:
  - File
  - Url (no support for output)
  - Native string
+ - [Flysystem][flysystem]
  - GitHub repo via GitHub API
 
 Logs can be formatted into the [KeepAChangeLog] format, xml and json through the use of various render classes.
@@ -126,6 +127,7 @@ Feel free to report any issues on the [issue tracker][issues].
  - Email: steven.david.west@gmail.com
 
 [KeepAChangeLog]: http://keepachangelog.com/
+[flysystem]: http://flysystem.thephpleague.com/
 [issues]: https://github.com/stevewest/changelog/issues
 [twitter]: http://twitter.com/SteveUru
 [GitHub]: https://github.com

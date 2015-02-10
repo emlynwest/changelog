@@ -17,7 +17,8 @@
     "require-dev": {
         "codeception/codeception": "~2.0",
         "codeception/mockery-module": "dev-master",
-        "milo/github-api": "dev-master"
+        "milo/github-api": "dev-master",
+        "league/flysystem": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -25,6 +26,7 @@
         }
     },
     "suggest": {
-        "milo/github-api": "Allows change logs to be loaded and committed to/from a github repo."
+        "milo/github-api": "Allows change logs to be loaded and committed to/from a github repo.",
+        "league/flysystem": "Allows change logs to be read and written to pretty much everywhere."
     }
 }
