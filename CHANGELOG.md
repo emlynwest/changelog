@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - Flysystem IO adaptor [#3](https://github.com/stevewest/changelog/issues/3).
+- GItHub release reading as part of [#17](https://github.com/stevewest/changelog/issues/17).
 
 ## [1.0.0]
 ### Removed

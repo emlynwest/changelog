@@ -10,10 +10,6 @@
 
 namespace ChangeLog\IO;
 
-use ChangeLog\AbstractIO;
-use Milo\Github\Api;
-use Milo\Github\OAuth\Token;
-use InvalidArgumentException;
 use stdClass;
 
 /**
@@ -27,52 +23,13 @@ use stdClass;
  *
  * The token must have the "repo" or "public_repo" permission depending on the visibility of the repo.
  */
-class GitHub extends AbstractIO
+class GitHub extends AbstractGitHubIO
 {
-
-	/**
-	 * @var Api
-	 */
-	protected $api;
 
 	protected $configDefaults = [
 		'commit_message' => 'Updates change log.',
 		'line_separator' => "\n",
 	];
-
-	/**
-	 * Gets an active connection to the GitHub api.
-	 *
-	 * @return Api
-	 */
-	protected function getApi()
-	{
-		if ($this->api === null)
-		{
-			$this->createApiInstance();
-		}
-
-		return $this->api;
-	}
-
-	/**
-	 * Creates a new instance of the API library to use later.
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	protected function createApiInstance()
-	{
-		$configToken = $this->getConfig('token');
-
-		if ($configToken === null)
-		{
-			throw new InvalidArgumentException('API token has not been set in the config.');
-		}
-
-		$token = new Token($configToken);
-		$this->api = new Api();
-		$this->api->setToken($token);
-	}
 
 	/**
 	 * {@inheritdoc}
