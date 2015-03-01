@@ -3,7 +3,10 @@
 ## [Unreleased]
 ### Added
 - Flysystem IO adaptor [#3](https://github.com/stevewest/changelog/issues/3).
-- GItHub release reading as part of [#17](https://github.com/stevewest/changelog/issues/17).
+- GitHub release reading as part of [#17](https://github.com/stevewest/changelog/issues/17).
+
+### Fixed
+- Fixes `KeepAChangeLog` behaving strangely with extra new lines [#19](https://github.com/stevewest/changelog/issues/19).
 
 ## [1.0.0]
 ### Removed

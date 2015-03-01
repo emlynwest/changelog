@@ -35,19 +35,21 @@ class KeepAChangeLog implements ParserInterface
 		$links = [];
 		$matches = [];
 
-		$line = ltrim(current($content));
-		while ($line)
+		$line = current($content);
+		while ($line !== false)
 		{
+			$line = ltrim($line);
+
 			if (preg_match('/^#(?!#).+/', $line) === 1)
 			{
 				$log->setTitle($this->trimHashes($line));
 			}
-			else if(preg_match('/^##(?!#).+/', $line) === 1)
+			elseif (preg_match('/^##(?!#).+/', $line) === 1)
 			{
 				$release = $this->parseRelease($content);
 				$log->addRelease($release);
 			}
-			else if(preg_match('/\[(.+)\] (.+)/', $line, $matches))
+			elseif (preg_match('/\[(.+)\] (.+)/', $line, $matches))
 			{
 				if (count($matches) >= 3)
 				{
@@ -59,7 +61,7 @@ class KeepAChangeLog implements ParserInterface
 				$description[] = $line;
 			}
 
-			$line = ltrim(next($content));
+			$line = next($content);
 		}
 
 		$log->setDescription(implode("\n", $description));
@@ -109,21 +111,26 @@ class KeepAChangeLog implements ParserInterface
 		$lastType = '';
 		$nameSet = false;
 
-		$line = ltrim(current($content));
-		while ($line)
+		$line = current($content);
+		while ($line !== false)
 		{
+			$line = ltrim($line);
+
 			if ($this->startsWith($line, '###'))
 			{
 				$type = $this->trimHashes($line);
 				$types[$type] = [];
 				$lastType = $type;
 			}
-			else if ($nameSet && $this->startsWith($line, '##'))
+			elseif ($nameSet &&
+				$this->startsWith($line, '##') ||
+				$this->startsWith($line, '[')
+			)
 			{
 				prev($content);
 				break;
 			}
-			else if ($this->startsWith($line, '##'))
+			elseif ($this->startsWith($line, '##'))
 			{
 				$this->handleName($release, $line);
 				$nameSet = true;
@@ -133,7 +140,7 @@ class KeepAChangeLog implements ParserInterface
 				$types[$lastType][] = ltrim($line, "\t\n\r\0\x0B -");
 			}
 
-			$line = ltrim(next($content));
+			$line = next($content);
 		}
 
 		$release->setAllChanges($types);

@@ -64,6 +64,7 @@ class KeepAChangeLogTest extends Test
 			' - 1',
 			'- 2',
 			'-3',
+			'',
 			'### Added',
 			'-    a',
 		];
@@ -93,7 +94,7 @@ class KeepAChangeLogTest extends Test
 		);
 
 		$this->assertEquals(
-			['1', '2', '3'],
+			['1', '2', '3', ''],
 			$changes['Fixes']
 		);
 
@@ -107,10 +108,12 @@ class KeepAChangeLogTest extends Test
 	{
 		$content = [
 			'# Change log',
+			'',
 			'## 1.0.0',
 			'### Fixes',
 			'- Issue 1',
 			'- Issue 2',
+			'',
 			'## 0.4.0',
 			'### Adds',
 			'- Awesome new feature',
