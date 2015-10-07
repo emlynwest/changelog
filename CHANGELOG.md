@@ -1,6 +1,9 @@
 # Change Log
 
 ## [Unreleased]
+
+
+## [1.1.0]
 ### Added
 - Flysystem IO adaptor [#3](https://github.com/stevewest/changelog/issues/3).
 - GitHub release reading as part of [#17](https://github.com/stevewest/changelog/issues/17).
@@ -50,6 +53,7 @@
 - Initial version.
 
 [Unreleased]: https://github.com/stevewest/changelog
+[1.1.0]: https://github.com/stevewest/changelog/releases/tag/1.1.0
 [1.0.0]: https://github.com/stevewest/changelog/releases/tag/1.0.0
 [0.4.0]: https://github.com/stevewest/changelog/releases/tag/0.4.0
 [0.3.0]: https://github.com/stevewest/changelog/releases/tag/0.3.0
