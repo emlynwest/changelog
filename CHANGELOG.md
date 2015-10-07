@@ -10,6 +10,7 @@
 
 ### Fixed
 - Fixes `KeepAChangeLog` behaving strangely with extra new lines [#19](https://github.com/stevewest/changelog/issues/19).
+- Changed `IO\String` to `IO\Native`
 
 ## [1.0.0]
 ### Removed

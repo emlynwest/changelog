@@ -15,7 +15,7 @@ use ChangeLog\AbstractIO;
 /**
  * Allows a native string to be used as a change log source
  */
-class String extends AbstractIO
+class Native extends AbstractIO
 {
 
 	/**

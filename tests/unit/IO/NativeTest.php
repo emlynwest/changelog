@@ -21,14 +21,14 @@ class StringTest extends Test
 	public function testGetSetContent()
 	{
 		$content = ['foo'];
-		$string = new String($content);
+		$string = new Native($content);
 
 		$this->assertEquals(
 			$content,
 			$string->getContent()
 		);
 
-		$string = new String;
+		$string = new Native;
 		$string->setContent("baz\nbat");
 		$this->assertEquals(
 			['baz', 'bat'],
