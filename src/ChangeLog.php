@@ -81,7 +81,7 @@ class ChangeLog
 	 *
 	 * @param IOInterface $input
 	 */
-	public function setInput($input)
+	public function setInput(IOInterface $input)
 	{
 		$this->input = $input;
 	}
@@ -91,7 +91,7 @@ class ChangeLog
 	 *
 	 * @param IOInterface $output
 	 */
-	public function setOutput($output)
+	public function setOutput(IOInterface $output)
 	{
 		$this->output = $output;
 	}
@@ -101,7 +101,7 @@ class ChangeLog
 	 *
 	 * @param RenderInterface $renderer
 	 */
-	public function setRenderer($renderer)
+	public function setRenderer(RenderInterface $renderer)
 	{
 		$this->renderer = $renderer;
 	}
@@ -111,7 +111,7 @@ class ChangeLog
 	 *
 	 * @param ParserInterface $parser
 	 */
-	public function setParser($parser)
+	public function setParser(ParserInterface $parser)
 	{
 		$this->parser = $parser;
 	}

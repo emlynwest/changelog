@@ -44,7 +44,7 @@ class ChangeLogTest extends Test
 		$log = new Log;
 		$parsed = 'foobar';
 
-		$renderer = Mockery::mock('ChangeLog\ParserInterface');
+		$renderer = Mockery::mock('ChangeLog\RenderInterface');
 		$renderer->shouldReceive('render')
 			->once()
 			->with($log)
