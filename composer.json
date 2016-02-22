@@ -15,6 +15,7 @@
         "naneau/semver": "dev-master"
     },
     "require-dev": {
+        "php": ">=5.5",
         "codeception/codeception": "~2.0",
         "codeception/mockery-module": "dev-master",
         "milo/github-api": "dev-master",

@@ -50,6 +50,8 @@ class GenericFactory
 	 * @param string $name
 	 * @param array  $parameters
 	 *
+	 * @return mixed
+	 *
 	 * @throws InvalidArgumentException If the class cannot be found.
 	 */
 	public function getInstance($name, $parameters = [])
