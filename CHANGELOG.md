@@ -1,7 +1,8 @@
 # Change Log
 
 ## [Unreleased]
-
+### Added
+- Create release command line utility [#6](https://github.com/stevewest/changelog/issues/6).
 
 ## [1.1.0]
 ### Added
@@ -25,7 +26,7 @@
 - Json and XML renderer [#7](https://github.com/stevewest/changelog/issues/7).
 
 ### Fixed
-- Fixed sorting releases with a release of the title "unreleased [#15](https://github.com/stevewest/changelog/issues/15).
+- Fixed sorting releases with a release of the title "unreleased" [#15](https://github.com/stevewest/changelog/issues/15).
 - Named links are now parsed and rendered correctly.
 
 ### Changed

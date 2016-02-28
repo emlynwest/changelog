@@ -8,20 +8,10 @@
  * @link https://github.com/stevewest/changelog
  */
 
-namespace ChangeLog\Stub;
+namespace ChangeLog\Console;
 
-use ChangeLog\IO\GitHub;
-use Mockery;
+use RuntimeException;
 
-class GitHubStub extends GitHub
+class ConfigNotFoundException extends RuntimeException
 {
-
-	/**
-	 * @return \Mockery\Mock
-	 */
-	public function setApi($api)
-	{
-		$this->api = $api;
-	}
-
 }

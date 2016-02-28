@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Version 5.5
+ * PHP Version 5.6
  * @category Library
  * @package ChangeLog
  * @author Steve "uru" West <steven.david.west@gmail.com>
@@ -15,7 +15,6 @@ use ReflectionClass;
 
 /**
  * Basic factory class that can be used to load classes from any given namespace.
- * Gee, would sure be awesome if PHP had generics for this...
  */
 class GenericFactory
 {
@@ -70,8 +69,7 @@ class GenericFactory
 			throw new InvalidArgumentException("$name is not a known class ($class)");
 		}
 
-		$reflectionClass = new ReflectionClass($class);
-		return $reflectionClass->newInstanceArgs($parameters);
+		return new $class($parameters);
 	}
 
 	/**

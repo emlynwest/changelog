@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Version 5.5
+ * PHP Version 5.6
  * @category Library
  * @package ChangeLog
  * @author Steve "uru" West <steven.david.west@gmail.com>
@@ -137,7 +137,12 @@ class KeepAChangeLog implements ParserInterface
 			}
 			else
 			{
-				$types[$lastType][] = ltrim($line, "\t\n\r\0\x0B -");
+				$change = ltrim($line, "\t\n\r\0\x0B -");
+
+				if ($change !== '')
+				{
+					$types[$lastType][] = $change;
+				}
 			}
 
 			$line = next($content);

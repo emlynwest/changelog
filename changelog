@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+use ChangeLog\Console\Release;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\InputOption;
+
+if (file_exists(__DIR__.'/vendor/autoload.php'))
+{
+	require_once(__DIR__.'/vendor/autoload.php');
+}
+
+$app = new Application('Changelog', 'dev');
+
+$app->getDefinition()->addOptions([
+	new InputOption(
+		'config',
+		null,
+		InputOption::VALUE_OPTIONAL,
+		'Location of config file.',
+		'changelog.config.php'
+	),
+]);
+
+$app->add(new Release('release'));
+
+$app->run();

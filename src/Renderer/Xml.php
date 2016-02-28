@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Version 5.5
+ * PHP Version 5.6
  * @category Library
  * @package ChangeLog
  * @author Steve "uru" West <steven.david.west@gmail.com>
