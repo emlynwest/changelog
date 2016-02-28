@@ -4,6 +4,9 @@
 ### Added
 - Create release command line utility [#6](https://github.com/stevewest/changelog/issues/6).
 
+### Fixed
+- Links are no longer parsed as a description.
+
 ## [1.1.0]
 ### Added
 - Flysystem IO adaptor [#3](https://github.com/stevewest/changelog/issues/3).

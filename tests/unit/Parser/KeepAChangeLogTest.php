@@ -181,7 +181,9 @@ class KeepAChangeLogTest extends Test
 	{
 		$content = [
 			'# Change log',
+			'',
 			'## [1.1.0][a]',
+			'',
 			'## [1.0.0]',
 			'',
 			'[a] http://google.com',
@@ -204,6 +206,8 @@ class KeepAChangeLogTest extends Test
 			'http://fuelphp.com',
 			$log->getRelease('1.0.0')->getLink()
 		);
+
+		$this->assertEmpty($log->getDescription());
 	}
 
 }

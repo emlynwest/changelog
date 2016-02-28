@@ -49,7 +49,7 @@ class Release extends BaseCommand
 		// TODO: Don't continue if the release is not found
 		// TODO: Don't continue if the release already exists
 		$log = $this->changeLog->parse();
-		$release = $log->getRelease('Unreleased');
+		$release = $log->getRelease('unreleased');
 		$release->setName($releaseName);
 
 		$this->changeLog->write($log);

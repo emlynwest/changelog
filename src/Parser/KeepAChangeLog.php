@@ -34,6 +34,7 @@ class KeepAChangeLog implements ParserInterface
 		$description = [];
 		$links = [];
 		$matches = [];
+		$bodyEnded = false;
 
 		$line = current($content);
 		while ($line !== false)
@@ -48,6 +49,7 @@ class KeepAChangeLog implements ParserInterface
 			{
 				$release = $this->parseRelease($content);
 				$log->addRelease($release);
+				$bodyEnded = true;
 			}
 			elseif (preg_match('/\[(.+)\] (.+)/', $line, $matches))
 			{
@@ -55,8 +57,9 @@ class KeepAChangeLog implements ParserInterface
 				{
 					$links[$matches[1]] = $matches[2];
 				}
+				$bodyEnded = true;
 			}
-			else
+			elseif ( ! $bodyEnded)
 			{
 				$description[] = $line;
 			}
