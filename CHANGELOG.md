@@ -6,6 +6,7 @@
 
 ### Fixed
 - Links are no longer parsed as a description.
+- Links are now parsed correctly.
 
 ## [1.1.0]
 ### Added

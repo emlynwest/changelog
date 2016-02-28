@@ -51,7 +51,7 @@ class KeepAChangeLog implements ParserInterface
 				$log->addRelease($release);
 				$bodyEnded = true;
 			}
-			elseif (preg_match('/\[(.+)\] (.+)/', $line, $matches))
+			elseif (preg_match('/^\[(.+)\]: (.+)/', $line, $matches))
 			{
 				if (count($matches) >= 3)
 				{

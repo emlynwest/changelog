@@ -186,8 +186,8 @@ class KeepAChangeLogTest extends Test
 			'',
 			'## [1.0.0]',
 			'',
-			'[a] http://google.com',
-			'[1.0.0] http://fuelphp.com',
+			'[a]: http://google.com',
+			'[1.0.0]: http://fuelphp.com',
 		];
 
 		$log = $this->parser->parse($content);
