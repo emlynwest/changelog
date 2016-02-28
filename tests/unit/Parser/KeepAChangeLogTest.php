@@ -94,7 +94,7 @@ class KeepAChangeLogTest extends Test
 		);
 
 		$this->assertEquals(
-			['1', '2', '3', ''],
+			['1', '2', '3'],
 			$changes['Fixes']
 		);
 

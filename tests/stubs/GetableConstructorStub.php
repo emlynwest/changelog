@@ -10,10 +10,10 @@ class GetableConstructorStub
 	public $one;
 	public $two;
 
-	public function __construct($one, $two)
+	public function __construct($config)
 	{
-		$this->one = $one;
-		$this->two = $two;
+		$this->one = $config[0];
+		$this->two = $config[1];
 	}
 
 }
