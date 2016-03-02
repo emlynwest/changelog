@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Publishes a new release.
  */
-class Release extends BaseCommand
+class Publish extends BaseCommand
 {
 	public function getDescription()
 	{
@@ -29,7 +29,7 @@ class Release extends BaseCommand
 		$this->addArgument(
 			'release',
 			InputOption::VALUE_REQUIRED,
-			'New release number'
+			'New release number, can be any valid semver or [major|minor|patch]'
 		);
 	}
 
@@ -37,20 +37,29 @@ class Release extends BaseCommand
 	{
 		parent::execute($input, $output);
 
-		$this->output = $output;
-
 		$releaseName = $input->getArgument('release');
 
 		if ($releaseName === null) {
-			$output->writeln('<error>A release name is required</error>');
-			return;
+			throw new InvalidArgumentException('A release name is required');
 		}
 
-		// TODO: Don't continue if the release is not found
-		// TODO: Don't continue if the release already exists
 		$log = $this->changeLog->parse();
+
+		// Don't continue if there is no unreleased version
+		if ( ! $log->hasRelease('unreleased')) {
+			throw new ReleaseNotFoundException('Unable to find an unreleased version.');
+		}
+
+		// Work out what version number we actually want
+		$newReleaseName = $log->getNextVersion($releaseName);
+
+		// Don't continue if the release already exists
+		if ($log->hasRelease($newReleaseName)) {
+			throw new ReleaseExistsException('A release with the name "' . $newReleaseName . '" already exists."');
+		}
+
 		$release = $log->getRelease('unreleased');
-		$release->setName($releaseName);
+		$release->setName($newReleaseName);
 
 		$this->changeLog->write($log);
 	}

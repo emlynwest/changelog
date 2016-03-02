@@ -13,6 +13,7 @@ namespace ChangeLog;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Naneau\SemVer\Parser;
 use Naneau\SemVer\Sort;
 use Naneau\SemVer\Version;
 use Traversable;
@@ -22,6 +23,9 @@ use Traversable;
  */
 class Log implements IteratorAggregate, Countable
 {
+	const VERSION_MAJOR = 'major';
+	const VERSION_MINOR = 'minor';
+	const VERSION_PATCH = 'patch';
 
 	/**
 	 * @var string
@@ -250,6 +254,55 @@ class Log implements IteratorAggregate, Countable
 		}
 
 		return $return;
+	}
+
+	/**
+	 * @return Release
+	 */
+	public function getLatestRelease()
+	{
+		$releases = $this->releases;
+
+		$release = array_shift($releases);
+
+		if (count($this->releases) > 1 && strtolower($release->getName()) === 'unreleased')
+		{
+			$release = array_shift($releases);
+		}
+
+		return $release;
+	}
+
+	public function getNextVersion($type)
+	{
+		if (! in_array($type, [static::VERSION_MAJOR, static::VERSION_MINOR, static::VERSION_PATCH]))
+		{
+			return $type;
+		}
+
+		$latestRelease = $this->getLatestRelease();
+
+		$version = $latestRelease->getName() === 'unreleased' ? '0.0.0' : $latestRelease->getName() ;
+
+		$semver = Parser::parse($version);
+		$patch = $semver->getPatch();
+		$minor = $semver->getMinor();
+		$major = $semver->getMajor();
+
+		switch ($type)
+		{
+			case Log::VERSION_PATCH:
+				$patch++;
+				break;
+			case Log::VERSION_MINOR:
+				$minor++;
+				break;
+			case Log::VERSION_MAJOR:
+				$major++;
+				break;
+		}
+
+		return "$major.$minor.$patch";
 	}
 
 }

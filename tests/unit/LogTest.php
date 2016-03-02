@@ -195,4 +195,40 @@ class LogTest extends Test
 		);
 	}
 
+	public function testGetLatestRelease()
+	{
+		$release1 = new Release('0.1.0');
+		$release2 = new Release('Unreleased');
+
+		$this->log->addRelease($release1);
+		$this->log->addRelease($release2);
+
+		$this->assertEquals(
+			$release1,
+			$this->log->getLatestRelease()
+		);
+	}
+
+	public function testGetNextVersion()
+	{
+		$release1 = new Release('0.1.0');
+
+		$this->log->addRelease($release1);
+
+		$this->assertEquals(
+			'0.1.1',
+			$this->log->getNextVersion(Log::VERSION_PATCH)
+		);
+
+		$this->assertEquals(
+			'0.2.0',
+			$this->log->getNextVersion(Log::VERSION_MINOR)
+		);
+
+		$this->assertEquals(
+			'1.1.0',
+			$this->log->getNextVersion(Log::VERSION_MAJOR)
+		);
+	}
+
 }
