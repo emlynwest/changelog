@@ -12,21 +12,32 @@
 
 return [
 	'input' => [
-		'strategy' => 'File',
-		'config' => [
-			'file' => 'CHANGELOG.md',
+		'default' => [
+			'strategy' => 'File',
+			'config' => [
+				'file' => 'CHANGELOG.md',
+			],
 		],
 	],
 	'parser' => [
-		'strategy' => 'KeepAChangeLog',
+		'default' => [
+			'strategy' => 'KeepAChangeLog',
+		],
 	],
 	'renderer' => [
-		'strategy' => 'KeepAChangeLog',
+		'default' => [
+			'strategy' => 'KeepAChangeLog',
+		],
+		'json' => [
+			'strategy' => 'Json',
+		],
 	],
 	'output' => [
-		'strategy' => 'File',
-		'config' => [
-			'file' => 'CHANGELOG.updated.md',
+		'default' => [
+			'strategy' => 'File',
+			'config' => [
+				'file' => 'CHANGELOG.updated.md',
+			],
 		],
 	],
 ];

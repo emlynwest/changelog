@@ -5,9 +5,13 @@ use ChangeLog\Console\Publish;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
 
-if (file_exists(__DIR__.'/vendor/autoload.php'))
+if (file_exists(__DIR__ . '/vendor/autoload.php'))
 {
-	require_once(__DIR__.'/vendor/autoload.php');
+	require_once(__DIR__ . '/vendor/autoload.php');
+}
+elseif (file_exists(__DIR__ . '/../../autoload.php'))
+{
+	require_once __DIR__ . '/../../autoload.php';
 }
 
 $app = new Application('Changelog', 'dev');
@@ -19,6 +23,34 @@ $app->getDefinition()->addOptions([
 		InputOption::VALUE_OPTIONAL,
 		'Location of config file.',
 		'changelog.config.php'
+	),
+	new InputOption(
+		'input',
+		null,
+		InputOption::VALUE_OPTIONAL,
+		'Config to use for input processor',
+		'default'
+	),
+	new InputOption(
+		'parser',
+		null,
+		InputOption::VALUE_OPTIONAL,
+		'Config to use for parser processor',
+		'default'
+	),
+	new InputOption(
+		'renderer',
+		null,
+		InputOption::VALUE_OPTIONAL,
+		'Config to use for renderer processor',
+		'default'
+	),
+	new InputOption(
+		'output',
+		null,
+		InputOption::VALUE_OPTIONAL,
+		'Config to use for output processor',
+		'default'
 	),
 ]);
 

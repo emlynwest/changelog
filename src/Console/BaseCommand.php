@@ -21,6 +21,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class BaseCommand extends Command
 {
+	const DEFAULT_FACTORY = 'default';
+
 	/**
 	 * @var array
 	 */
@@ -45,37 +47,43 @@ class BaseCommand extends Command
 		// Construct a changelog object to manipulate
 		$this->changeLog = new ChangeLog();
 
-		$this->setInput();
-		$this->setParser();
-		$this->setRenderer();
-		$this->setOutput();
+		$this->setInput($input->getOption('input'));
+		$this->setParser($input->getOption('parser'));
+		$this->setRenderer($input->getOption('renderer'));
+		$this->setOutput($input->getOption('output'));
 	}
 
-	protected function setInput()
+	protected function setInput($factoryName)
 	{
 		$factory = new GenericFactory('\ChangeLog\IO\\');
-		$instance = $factory->getInstance($this->config['input']['strategy'], $this->config['input']['config']);
+		$instance = $factory->getInstance(
+			$this->config['input'][$factoryName]['strategy'],
+			$this->config['input'][$factoryName]['config']
+		);
 		$this->changeLog->setInput($instance);
 	}
 
-	protected function setParser()
+	protected function setParser($factoryName)
 	{
 		$factory = new GenericFactory('\ChangeLog\Parser\\');
-		$instance = $factory->getInstance($this->config['parser']['strategy']);
+		$instance = $factory->getInstance($this->config['parser'][$factoryName]['strategy']);
 		$this->changeLog->setParser($instance);
 	}
 
-	protected function setRenderer()
+	protected function setRenderer($factoryName)
 	{
 		$factory = new GenericFactory('\ChangeLog\Renderer\\');
-		$instance = $factory->getInstance($this->config['renderer']['strategy']);
+		$instance = $factory->getInstance($this->config['renderer'][$factoryName]['strategy']);
 		$this->changeLog->setRenderer($instance);
 	}
 
-	protected function setOutput()
+	protected function setOutput($factoryName)
 	{
 		$factory = new GenericFactory('\ChangeLog\IO\\');
-		$instance = $factory->getInstance($this->config['output']['strategy'], $this->config['output']['config']);
+		$instance = $factory->getInstance(
+			$this->config['output'][$factoryName]['strategy'],
+			$this->config['output'][$factoryName]['config']
+		);
 		$this->changeLog->setOutput($instance);
 	}
 

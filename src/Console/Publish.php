@@ -19,6 +19,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class Publish extends BaseCommand
 {
+	/**
+	 * @return string
+	 */
 	public function getDescription()
 	{
 		return 'Publishes the unreleased version as a released version.';
