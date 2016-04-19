@@ -23,8 +23,8 @@ class Convert extends AbstractCommand
 	 */
 	public function getDescription()
 	{
-		return "Converts a release between formats.\n\n" .
-			"\tUses the global input, parser, renderer and output flags for processing.";
+		return "Converts a release between formats.\n" .
+			"Uses the global input, parser, renderer and output flags for processing.";
 	}
 
 	public function execute(InputInterface $input, OutputInterface $output)

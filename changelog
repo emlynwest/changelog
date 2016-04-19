@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+use ChangeLog\Console\Add;
 use ChangeLog\Console\Convert;
 use ChangeLog\Console\Release;
 use Symfony\Component\Console\Application;
@@ -57,5 +58,6 @@ $app->getDefinition()->addOptions([
 
 $app->add(new Release('release'));
 $app->add(new Convert('convert'));
+$app->add(new Add('add'));
 
 $app->run();
