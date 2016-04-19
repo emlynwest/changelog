@@ -12,6 +12,7 @@ before_script:
   - composer install
 
 script:
+  - composer validate --strict
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ] && [ "$TRAVIS_PHP_VERSION" != "7" ]; then vendor/bin/codecept run unit --coverage-xml; fi;'
   - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] || [ "$TRAVIS_PHP_VERSION" == "7" ]; then vendor/bin/codecept run unit; fi;'
 
