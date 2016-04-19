@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Shared common logic for commands.
  */
-class BaseCommand extends Command
+abstract class AbstractCommand extends Command
 {
 	const DEFAULT_FACTORY = 'default';
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use ChangeLog\Console\Publish;
+use ChangeLog\Console\Convert;
+use ChangeLog\Console\Release;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -54,6 +55,7 @@ $app->getDefinition()->addOptions([
 	),
 ]);
 
-$app->add(new Publish('release'));
+$app->add(new Release('release'));
+$app->add(new Convert('convert'));
 
 $app->run();

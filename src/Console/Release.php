@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Publishes a new release.
  */
-class Publish extends BaseCommand
+class Release extends AbstractCommand
 {
 	/**
 	 * @return string
