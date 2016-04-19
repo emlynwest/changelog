@@ -7,6 +7,7 @@
 ### Fixed
 - Links are no longer parsed as a description.
 - Links are now parsed correctly.
+- No longer require `dev-master` for the `naneau/semver` package [#21](https://github.com/stevewest/changelog/issues/21).
 
 ## [1.1.0]
 ### Added

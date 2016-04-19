@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "naneau/semver": "dev-master",
-        "symfony/console": "^3.0"
+        "symfony/console": "^3.0",
+        "naneau/semver": "^0.0.7"
     },
     "require-dev": {
         "php": ">=5.6",
