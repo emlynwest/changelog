@@ -3,7 +3,7 @@
 [![Travis Build](https://img.shields.io/travis/stevewest/changelog.svg?style=flat-square)](https://travis-ci.org/stevewest/changelog/)
 [![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
 [![Code Quality](https://img.shields.io/scrutinizer/coverage/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/stevewest/changelog/badge.svg)](https://travis-ci.org/{your-repository})
+[![PHP 7 ready](http://php7ready.timesplinter.ch/stevewest/changelog/badge.svg)](https://travis-ci.org/stevewest/changelog)
 [![HHVM](https://img.shields.io/hhvm/stevewest/changelog.svg?style=flat-square)](http://hhvm.h4cc.de/package/stevewest/changelog)
 [![Packagist](https://img.shields.io/packagist/v/stevewest/changelog.svg?style=flat-square)](https://packagist.org/packages/stevewest/changelog)
 
