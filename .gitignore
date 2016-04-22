@@ -3,3 +3,5 @@ composer.lock
 .idea
 codeception.yml
 tests/_output/*
+package/bin
+package/changelog.phar
