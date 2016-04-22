@@ -13,6 +13,7 @@ namespace ChangeLog\IO;
 use Codeception\Module\Filesystem;
 use Codeception\TestCase\Test;
 use InvalidArgumentException;
+use PHPUnit_Framework_Error_Warning;
 
 /**
  * Tests for IO\File
@@ -41,7 +42,7 @@ class FileTest extends Test
 			$this->file->getContent()
 		);
 	}
-
+	
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
@@ -66,5 +67,4 @@ class FileTest extends Test
 		$filesystem->seeInThisFile($content);
 		$filesystem->deleteFile($file);
 	}
-
 }

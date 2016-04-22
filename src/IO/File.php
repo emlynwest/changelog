@@ -36,11 +36,6 @@ class File extends AbstractIO
 
 		$content = file_get_contents($file);
 
-		if ( ! $content)
-		{
-			return null;
-		}
-
 		return explode(
 			$this->getConfig('line_separator'),
 			$content

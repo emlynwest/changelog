@@ -229,6 +229,11 @@ class LogTest extends Test
 			'1.1.0',
 			$this->log->getNextVersion(Log::VERSION_MAJOR)
 		);
+
+		$this->assertEquals(
+			'foobar',
+			$this->log->getNextVersion('foobar')
+		);
 	}
 
 }
