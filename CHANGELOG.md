@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [1.2.0] 2016-04-23
 ### Added
 - Create release command line utility [#6](https://github.com/stevewest/changelog/issues/6).
 - Create convert command line utility [#6](https://github.com/stevewest/changelog/issues/6).
@@ -62,7 +62,7 @@
 ### Added
 - Initial version.
 
-[Unreleased]: https://github.com/stevewest/changelog
+[1.1.0]: https://github.com/stevewest/changelog/releases/tag/1.2.0
 [1.1.0]: https://github.com/stevewest/changelog/releases/tag/1.1.0
 [1.0.0]: https://github.com/stevewest/changelog/releases/tag/1.0.0
 [0.4.0]: https://github.com/stevewest/changelog/releases/tag/0.4.0
