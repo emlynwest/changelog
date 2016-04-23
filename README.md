@@ -17,7 +17,7 @@ It is possible to read and write logs from/to:
  - Url (no support for output)
  - Native string
  - [Flysystem][flysystem]
- - GitHub repo via GitHub API
+ - GitHub repo via GitHub API (currently not for output as I've yet to find a sensible way to do this)
 
 Logs can be formatted into the [KeepAChangeLog] format, xml and json through the use of various render classes.
 
@@ -111,6 +111,35 @@ $log1->mergeLog($log2);
 
 Depending on your use case it might be useful to create an empty log first and merge other logs into that.
 
+## Command line utility
+
+Common actions can be performed from the command line using the `./vendor/bin/changelog` command or via the `changelog.phar`
+at [the releases page][releases].
+
+The command line utility expects a config file called `changelog.config.php` to exist in the working directory, or it
+can be specified with the global `--config` option. An example config file can be found in `changelog.config.example.php`
+
+All commands use the same four options to read, parse, render and finally output a change log. These all default to the
+"default" entry in their respective config arrays.
+
+```
+      --input[=INPUT]        Config to use for input processor [default: "default"]
+      --parser[=PARSER]      Config to use for parser processor [default: "default"]
+      --renderer[=RENDERER]  Config to use for renderer processor [default: "default"]
+      --output[=OUTPUT]      Config to use for output processor [default: "default"]
+```
+
+Eg: `changelog.phar --renderer=json` would use the `json` entry from the `renderer` entry of the config file to construct
+a `ChangeLog\Renderer\Json` object to use to create the end content.
+
+The current commands are:
+ - Add: Adds a change to a release
+ - Convert:  Converts a release between formats. Simply runs the read, parse, render, write sequence.
+ - Release: Converts the "unreleased" release into a real release. Can take names such as `major`, `minor`, `patch` to
+ automatically create release numbers.
+
+Check `changelog.phar help` for more information.
+
 ## Development
 
 Current plans for development can be found in the repo's [issue tracker][issues].
@@ -132,3 +161,4 @@ Feel free to report any issues on the [issue tracker][issues].
 [issues]: https://github.com/stevewest/changelog/issues
 [twitter]: http://twitter.com/SteveUru
 [GitHub]: https://github.com
+[releases]: https://github.com/stevewest/changelog/releases
