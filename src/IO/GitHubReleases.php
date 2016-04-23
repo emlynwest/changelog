@@ -70,6 +70,7 @@ class GitHubReleases extends AbstractGitHubIO
 	public function setContent($content)
 	{
 		// TODO: Implement setContent() method.
+		throw new \Exception('This has yet to be implemented.');
 	}
 
 	/**

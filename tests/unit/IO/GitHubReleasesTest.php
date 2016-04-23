@@ -72,4 +72,14 @@ class GitHubReleasesTest extends Test
 		);
 	}
 
+	/**
+	 * @expectedException \Exception
+	 * @expectedExceptionMessage This has yet to be implemented.
+	 */
+	public function testSetContent()
+	{
+		$gitHub = new GitHubReleasesStub;
+		$gitHub->setContent('foobar');
+	}
+
 }

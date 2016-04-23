@@ -20,6 +20,7 @@ class Convert extends AbstractCommand
 {
 	/**
 	 * @return string
+	 * @codeCoverageIgnore
 	 */
 	public function getDescription()
 	{
@@ -27,6 +28,12 @@ class Convert extends AbstractCommand
 			"Uses the global input, parser, renderer and output flags for processing.";
 	}
 
+	/**
+	 * Reads and writes the log to covert the format.
+	 *
+	 * @param InputInterface  $input
+	 * @param OutputInterface $output
+	 */
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
 		parent::execute($input, $output);

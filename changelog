@@ -27,44 +27,6 @@ elseif (file_exists(__DIR__ . '/../../autoload.php'))
 
 $app = new Application('Changelog', Version::VERSION);
 
-$app->getDefinition()->addOptions([
-	new InputOption(
-		'config',
-		null,
-		InputOption::VALUE_OPTIONAL,
-		'Location of config file.',
-		'changelog.config.php'
-	),
-	new InputOption(
-		'input',
-		null,
-		InputOption::VALUE_OPTIONAL,
-		'Config to use for input processor',
-		'default'
-	),
-	new InputOption(
-		'parser',
-		null,
-		InputOption::VALUE_OPTIONAL,
-		'Config to use for parser processor',
-		'default'
-	),
-	new InputOption(
-		'renderer',
-		null,
-		InputOption::VALUE_OPTIONAL,
-		'Config to use for renderer processor',
-		'default'
-	),
-	new InputOption(
-		'output',
-		null,
-		InputOption::VALUE_OPTIONAL,
-		'Config to use for output processor',
-		'default'
-	),
-]);
-
 $app->add(new Release('release'));
 $app->add(new Convert('convert'));
 $app->add(new Add('add'));

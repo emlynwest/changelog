@@ -10,17 +10,12 @@
  * Sample config.
  */
 
-/**
- * Sample config for the command line utility
- * TODO: expand this out to cover all the various IO, parser and renderer options
- */
-
 return [
 	'input' => [
 		'default' => [
 			'strategy' => 'File',
 			'config' => [
-				'file' => 'CHANGELOG.md',
+				'file' => __DIR__.'/changelog.md',
 			],
 		],
 	],
@@ -31,9 +26,6 @@ return [
 	],
 	'renderer' => [
 		'default' => [
-			'strategy' => 'KeepAChangeLog',
-		],
-		'json' => [
 			'strategy' => 'Json',
 		],
 	],
@@ -41,7 +33,7 @@ return [
 		'default' => [
 			'strategy' => 'File',
 			'config' => [
-				'file' => 'CHANGELOG.updated.md',
+				'file' => __DIR__.'/../_output/changelog.json',
 			],
 		],
 	],

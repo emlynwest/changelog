@@ -22,6 +22,7 @@ class Add extends AbstractCommand
 {
 	/**
 	 * @return string
+	 * @codeCoverageIgnore
 	 */
 	public function getDescription()
 	{
@@ -30,6 +31,8 @@ class Add extends AbstractCommand
 
 	protected function configure()
 	{
+		parent::configure();
+
 		$this->addArgument(
 			'release',
 			InputOption::VALUE_REQUIRED,

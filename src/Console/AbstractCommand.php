@@ -14,6 +14,7 @@ use ChangeLog\ChangeLog;
 use ChangeLog\GenericFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -32,6 +33,45 @@ abstract class AbstractCommand extends Command
 	 * @var ChangeLog
 	 */
 	protected $changeLog;
+
+	protected function configure()
+	{
+		$this->addOption(
+			'config',
+			null,
+			InputOption::VALUE_OPTIONAL,
+			'Location of config file.',
+			'changelog.config.php'
+		);
+		$this->addOption(
+			'input',
+			null,
+			InputOption::VALUE_OPTIONAL,
+			'Config to use for input processor',
+			'default'
+		);
+		$this->addOption(
+			'parser',
+			null,
+			InputOption::VALUE_OPTIONAL,
+			'Config to use for parser processor',
+			'default'
+		);
+		$this->addOption(
+			'renderer',
+			null,
+			InputOption::VALUE_OPTIONAL,
+			'Config to use for renderer processor',
+			'default'
+		);
+		$this->addOption(
+			'output',
+			null,
+			InputOption::VALUE_OPTIONAL,
+			'Config to use for output processor',
+			'default'
+		);
+	}
 
 	public function execute(InputInterface $input, OutputInterface $output)
 	{

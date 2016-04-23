@@ -21,6 +21,7 @@ class Release extends AbstractCommand
 {
 	/**
 	 * @return string
+	 * @codeCoverageIgnore
 	 */
 	public function getDescription()
 	{
@@ -29,6 +30,8 @@ class Release extends AbstractCommand
 
 	protected function configure()
 	{
+		parent::configure();
+
 		$this->addArgument(
 			'release',
 			InputOption::VALUE_REQUIRED,
@@ -63,6 +66,10 @@ class Release extends AbstractCommand
 
 		$release = $log->getRelease('unreleased');
 		$release->setName($newReleaseName);
+
+		// Remove and re-add the release to trigger the log internals
+		$log->addRelease($release);
+		$log->removeRelease('unreleased');
 
 		$this->changeLog->write($log);
 	}
