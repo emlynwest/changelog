@@ -82,6 +82,65 @@ class ReleaseTest extends Test
 				'releases' => [
 					'1.0.0' => [
 						'name' => '1.0.0',
+						'link' => null,
+						'linkName' => null,
+					],
+				],
+			],
+			$jsonContent
+		);
+	}
+
+	public function testReleaseWithLink()
+	{
+		$outputPath = __DIR__ . '/../../_output/changelog.json';
+		@unlink($outputPath);
+
+		$this->commandTester->execute([
+			'release' => '1.0.0',
+			'--link' => 'http://foobar.com/release/1.0.0',
+			'--config' => __DIR__.'/../../resources/changelog.config.php',
+		]);
+
+		$this->assertFileExists($outputPath);
+		$jsonContent = json_decode(file_get_contents($outputPath), true);
+
+		$this->assertArraySubset(
+			[
+				'releases' => [
+					'1.0.0' => [
+						'name' => '1.0.0',
+						'link' => 'http://foobar.com/release/1.0.0',
+						'linkName' => '1.0.0',
+					],
+				],
+			],
+			$jsonContent
+		);
+	}
+
+	public function testReleaseWithName()
+	{
+		$outputPath = __DIR__ . '/../../_output/changelog.json';
+		@unlink($outputPath);
+
+		$this->commandTester->execute([
+			'release' => '1.0.0',
+			'--link' => 'http://foobar.com/release/1.0.0',
+			'--linkName' => 'hello',
+			'--config' => __DIR__.'/../../resources/changelog.config.php',
+		]);
+
+		$this->assertFileExists($outputPath);
+		$jsonContent = json_decode(file_get_contents($outputPath), true);
+
+		$this->assertArraySubset(
+			[
+				'releases' => [
+					'1.0.0' => [
+						'name' => '1.0.0',
+						'link' => 'http://foobar.com/release/1.0.0',
+						'linkName' => 'hello',
 					],
 				],
 			],

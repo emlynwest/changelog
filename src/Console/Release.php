@@ -37,6 +37,18 @@ class Release extends AbstractCommand
 			InputOption::VALUE_REQUIRED,
 			'New release number, can be any valid semver or [major|minor|patch]'
 		);
+		$this->addOption(
+			'link',
+			null,
+			InputOption::VALUE_REQUIRED,
+			'Optional link to the release\'s info page'
+		);
+		$this->addOption(
+			'linkName',
+			null,
+			InputOption::VALUE_REQUIRED,
+			'Optional link name, release name will be used if not specified'
+		);
 	}
 
 	public function execute(InputInterface $input, OutputInterface $output)
@@ -66,6 +78,19 @@ class Release extends AbstractCommand
 
 		$release = $log->getRelease('unreleased');
 		$release->setName($newReleaseName);
+
+		$newLink = $input->getOption('link');
+
+		if ($newLink === null) {
+			$release->setLink(null);
+			$release->setLinkName(null);
+		} else {
+			$newLinkName = $input->getOption('linkName');
+			$newLinkName = $newLinkName === null ? $newReleaseName : $newLinkName;
+
+			$release->setLink($newLink);
+			$release->setLinkName($newLinkName);
+		}
 
 		// Remove and re-add the release to trigger the log internals
 		$log->addRelease($release);
