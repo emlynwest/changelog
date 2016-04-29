@@ -48,7 +48,7 @@ $release2->setChanges('Fixed', [
 $log->addRelease($release2);
 ```
 
-**Note** releases are sorted in accordance to semantic visioning automatically with the latest release at the top.
+**Note** releases are sorted in accordance to [Semantic Versioning](http://semver.org) automatically with the latest release at the top.
 It is expected that all release names follow this and the only exception to this is `unreleased` which will always be at
 the top of the release list.
 
