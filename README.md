@@ -1,11 +1,11 @@
 # ChangeLog
 
-[![Travis Build](https://img.shields.io/travis/stevewest/changelog.svg?style=flat-square)](https://travis-ci.org/stevewest/changelog/)
-[![Code Coverage](https://img.shields.io/scrutinizer/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
-[![Code Quality](https://img.shields.io/scrutinizer/coverage/g/stevewest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/stevewest/changelog/)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/stevewest/changelog/badge.svg)](https://travis-ci.org/stevewest/changelog)
-[![HHVM](https://img.shields.io/hhvm/stevewest/changelog.svg?style=flat-square)](http://hhvm.h4cc.de/package/stevewest/changelog)
-[![Packagist](https://img.shields.io/packagist/v/stevewest/changelog.svg?style=flat-square)](https://packagist.org/packages/stevewest/changelog)
+[![Travis Build](https://img.shields.io/travis/emlynwest/changelog.svg?style=flat-square)](https://travis-ci.org/emlynwest/changelog/)
+[![Code Coverage](https://img.shields.io/scrutinizer/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
+[![Code Quality](https://img.shields.io/scrutinizer/coverage/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/emlynwest/changelog/badge.svg)](https://travis-ci.org/emlynwest/changelog)
+[![HHVM](https://img.shields.io/hhvm/emlynwest/changelog.svg?style=flat-square)](http://hhvm.h4cc.de/package/emlynwest/changelog)
+[![Packagist](https://img.shields.io/packagist/v/emlynwest/changelog.svg?style=flat-square)](https://packagist.org/packages/emlynwest/changelog)
 
 Quickly and easily modify change logs from a variety of sources.
 
@@ -154,11 +154,12 @@ Feel free to report any issues on the [issue tracker][issues].
 
  - [Twitter][twitter]
  - [GitHub]
- - Email: steven.david.west@gmail.com
+ - Email: emlyn.west@gmail.com
 
 [KeepAChangeLog]: http://keepachangelog.com/
 [flysystem]: http://flysystem.thephpleague.com/
-[issues]: https://github.com/stevewest/changelog/issues
-[twitter]: http://twitter.com/SteveUru
+[issues]: https://github.com/emlynwest/changelog/issues
+[twitter]: http://twitter.com/emlynwest
 [GitHub]: https://github.com
-[releases]: https://github.com/stevewest/changelog/releases
+[releases]: https://github.com/emlynwest/changelog/releases
+
