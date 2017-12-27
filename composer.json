@@ -1,5 +1,5 @@
 {
-    "name": "stevewest/changelog",
+    "name": "emlynwest/changelog",
     "description": "Package to enable change logs to be parsed",
     "type": "library",
     "keywords": ["change", "log", "changelog", "parser"],
