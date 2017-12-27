@@ -150,7 +150,7 @@ Feel free to report any issues on the [issue tracker][issues].
 
 ## Author
 
-### Steve "uru" West
+### Emlyn West
 
  - [Twitter][twitter]
  - [GitHub]
@@ -162,4 +162,3 @@ Feel free to report any issues on the [issue tracker][issues].
 [twitter]: http://twitter.com/emlynwest
 [GitHub]: https://github.com
 [releases]: https://github.com/emlynwest/changelog/releases
-
