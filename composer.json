@@ -3,7 +3,7 @@
     "description": "Package to enable change logs to be parsed",
     "type": "library",
     "keywords": ["change", "log", "changelog", "parser"],
-    "homepage": "https://github.com/stevewest/changelog",
+    "homepage": "https://github.com/emlynwest/changelog",
     "license": "MIT",
     "authors": [
         {
