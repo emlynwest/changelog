@@ -12,6 +12,7 @@
 use ChangeLog\Console\Add;
 use ChangeLog\Console\Convert;
 use ChangeLog\Console\Release;
+use ChangeLog\Console\Merge;
 use ChangeLog\Version;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputOption;
@@ -30,5 +31,6 @@ $app = new Application('Changelog', Version::VERSION);
 $app->add(new Release('release'));
 $app->add(new Convert('convert'));
 $app->add(new Add('add'));
+$app->add(new Merge('merge'));
 
 $app->run();
