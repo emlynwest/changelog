@@ -1,15 +1,16 @@
 <?php
 /**
- * easyProperty.com
- *
- * @link      www.easyproperty.com
- * @copyright Copyright (c) 2016 easyproperty.com
- * @license   Proprietary
+ * PHP Version 5.6
+ * @category Library
+ * @package ChangeLog
+ * @author Emlyn West <emlyn.west@gmail.gom>
+ * @license MIT http://opensource.org/licenses/MIT
+ * @link https://github.com/emlynwest/changelog
  */
 
 namespace ChangeLog;
 
 class Version
 {
-	const VERSION = '2.2.0';
+	const VERSION = '1.2.0';
 }
