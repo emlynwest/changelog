@@ -3,6 +3,10 @@
 ## Unreleased
 ### Added
 - Introduce command line merge command [#25](https://github.com/emlynwest/changelog/issues/25)
+- Build targets for PHP 7.1 and 7.2
+
+### Removed
+- Build target for HHVM
 
 ## [1.2.0] 2016-04-23
 ### Added
