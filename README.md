@@ -137,6 +137,7 @@ The current commands are:
  - Convert:  Converts a release between formats. Simply runs the read, parse, render, write sequence.
  - Release: Converts the "unreleased" release into a real release. Can take names such as `major`, `minor`, `patch` to
  automatically create release numbers.
+ - Merge: Merge multiple changelog into one.
 
 Check `changelog.phar help` for more information.
 
