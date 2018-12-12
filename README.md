@@ -159,5 +159,5 @@ Feel free to report any issues on the [issue tracker][issues].
 [flysystem]: http://flysystem.thephpleague.com/
 [issues]: https://github.com/emlynwest/changelog/issues
 [twitter]: http://twitter.com/emlynwest
-[GitHub]: https://github.com
+[GitHub]: https://github.com/emlynwest
 [releases]: https://github.com/emlynwest/changelog/releases

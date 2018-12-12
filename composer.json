@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "php": ">=5.6",
+        "ext-json": "*",
         "codeception/codeception": "~2.0",
         "codeception/mockery-module": "dev-master",
         "milo/github-api": "dev-master",
