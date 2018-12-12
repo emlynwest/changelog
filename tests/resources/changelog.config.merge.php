@@ -4,10 +4,10 @@
  *
  * @category Library
  *
- * @author Steve "uru" West <steven.david.west@gmail.com>
+ * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  *
- * @see https://github.com/stevewest/changelog
+ * @see https://github.com/emlynwest/changelog
  *
  * Sample config.
  */

@@ -3,8 +3,6 @@
 [![Travis Build](https://img.shields.io/travis/emlynwest/changelog.svg?style=flat-square)](https://travis-ci.org/emlynwest/changelog/)
 [![Code Coverage](https://img.shields.io/scrutinizer/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
 [![Code Quality](https://img.shields.io/scrutinizer/coverage/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/emlynwest/changelog/badge.svg)](https://travis-ci.org/emlynwest/changelog)
-[![HHVM](https://img.shields.io/hhvm/emlynwest/changelog.svg?style=flat-square)](http://hhvm.h4cc.de/package/emlynwest/changelog)
 [![Packagist](https://img.shields.io/packagist/v/emlynwest/changelog.svg?style=flat-square)](https://packagist.org/packages/emlynwest/changelog)
 
 Quickly and easily modify change logs from a variety of sources.

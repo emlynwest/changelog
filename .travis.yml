@@ -4,17 +4,17 @@ sudo: false
 
 php:
   - 5.6
-  - 7
-  - hhvm
+  - 7.1
+  - 7.2
+  - 7.3
 
 before_script:
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ] && [ "$TRAVIS_PHP_VERSION" != "7" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi;'
+  - wget https://scrutinizer-ci.com/ocular.phar
   - composer install
 
 script:
   - composer validate --strict
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ] && [ "$TRAVIS_PHP_VERSION" != "7" ]; then vendor/bin/codecept run unit --coverage-xml; fi;'
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" == "hhvm" ] || [ "$TRAVIS_PHP_VERSION" == "7" ]; then vendor/bin/codecept run unit; fi;'
+  - vendor/bin/codecept run unit --coverage-xml
 
 after_script:
-  - bash -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ] && [ "$TRAVIS_PHP_VERSION" != "7" ]; then php ocular.phar code-coverage:upload --format=php-clover tests/_output/coverage.xml; fi;'
+  - php ocular.phar code-coverage:upload --format=php-clover tests/_output/coverage.xml

@@ -5,7 +5,7 @@
  * @package ChangeLog
  * @author Erwan Richard <erwan.richard@protonmail.com>
  * @license MIT http://opensource.org/licenses/MIT
- * @link https://github.com/stevewest/changelog
+ * @link https://github.com/emlynwest/changelog
  */
 
 namespace ChangeLog\Console;
