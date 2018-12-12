@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## [1.3.0]
 ### Added
 - Introduce command line merge command [#25](https://github.com/emlynwest/changelog/issues/25)
 - Build targets for PHP 7.1 and 7.2
@@ -70,6 +70,7 @@
 ### Added
 - Initial version.
 
+[1.3.0]: https://github.com/emlynwest/changelog/releases/tag/1.3.0
 [1.2.0]: https://github.com/emlynwest/changelog/releases/tag/1.2.0
 [1.1.0]: https://github.com/emlynwest/changelog/releases/tag/1.1.0
 [1.0.0]: https://github.com/emlynwest/changelog/releases/tag/1.0.0
