@@ -5,6 +5,6 @@ tools:
 build:
   nodes:
     analysis:
-      test:
+      tests:
         override:
           - php-scrutinizer-run
