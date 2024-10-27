@@ -12,17 +12,19 @@
         }
     ],
     "require": {
-        "symfony/console": "^3.0",
+        "symfony/console": "^7.0",
         "naneau/semver": "^0.0.7"
     },
     "require-dev": {
-        "php": ">=5.6",
+        "php": ">=8.1",
         "ext-json": "*",
-        "codeception/codeception": "~2.0",
-        "codeception/mockery-module": "dev-master",
+        "codeception/codeception": "~5.1",
+        "codeception/mockery-module": "~0.5",
         "milo/github-api": "dev-master",
-        "league/flysystem": "dev-master",
-        "codegyre/robo": "^0.7.2"
+        "league/flysystem": ">=3.29",
+        "consolidation/robo": "^5.1",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-filesystem": "^3.0"
     },
     "autoload": {
         "psr-4": {

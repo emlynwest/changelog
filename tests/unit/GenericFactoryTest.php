@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -11,14 +8,14 @@
 namespace ChangeLog;
 
 use ChangeLog\Stub\GetableConstructorStub;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use Mockery;
 
 /**
  * Tests for GenericFactory
  */
-class GenericFactoryTest extends Test
+class GenericFactoryTest extends Unit
 {
 
 	/**
@@ -39,11 +36,10 @@ class GenericFactoryTest extends Test
 		);
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
 	public function testGetInvalidClass()
 	{
+		$this->expectException(InvalidArgumentException::class);
+
 		$this->factory->getInstance('If this works there is something seriously wrong!');
 	}
 

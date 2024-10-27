@@ -1,8 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
- * @category Library
- * @package ChangeLog
+ * @category Library * @package ChangeLog
  * @author Steve "uru" West <steve.david.west@gmail.com>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
@@ -12,13 +10,13 @@ namespace ChangeLog\Renderer;
 
 use ChangeLog\Log;
 use ChangeLog\Release;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use DateTime;
 
 /**
  * Tests for Json
  */
-class JsonTest extends Test
+class JsonTest extends Unit
 {
 
 	/**

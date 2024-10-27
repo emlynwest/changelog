@@ -1,23 +1,20 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
 
 namespace ChangeLog;
 
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use LogicException;
 use Mockery;
 
 /**
  * Tests for ChangeLog
  */
-class ChangeLogTest extends Test
+class ChangeLogTest extends Unit
 {
 
 	public function testParse()
@@ -61,21 +58,19 @@ class ChangeLogTest extends Test
 		$changeLog->write($log);
 	}
 
-	/**
-	 * @expectedException LogicException
-	 */
 	public function testParseWithoutInput()
 	{
+		$this->expectException(LogicException::class);
+
 		$parser = Mockery::mock('ChangeLog\ParserInterface');
 		$changeLog = new ChangeLog($parser);
 		$changeLog->parse();
 	}
 
-	/**
-	 * @expectedException LogicException
-	 */
 	public function testWriteWithoutInput()
 	{
+		$this->expectException(LogicException::class);
+
 		$parser = Mockery::mock('ChangeLog\RenderInterface');
 		$changeLog = new ChangeLog();
 		$changeLog->setRenderer($parser);

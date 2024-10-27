@@ -1,27 +1,24 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
 
 namespace ChangeLog\Console;
 
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class ReleaseTest extends Test
+class ReleaseTest extends Unit
 {
 	/**
 	 * @var CommandTester
 	 */
 	protected $commandTester;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
@@ -32,32 +29,29 @@ class ReleaseTest extends Test
 		$this->commandTester = new CommandTester($command);
 	}
 
-	/**
-	 * @expectedException \ChangeLog\Console\InvalidArgumentException
-	 */
 	public function testMissingRelease()
 	{
+		$this->expectException(InvalidArgumentException::class);
+
 		$this->commandTester->execute([
 			'--config' => __DIR__.'/../../resources/changelog.config.php',
 		]);
 	}
 
-	/**
-	 * @expectedException \ChangeLog\Console\ReleaseNotFoundException
-	 */
 	public function testNoUnreleased()
 	{
+		$this->expectException(ReleaseNotFoundException::class);
+
 		$this->commandTester->execute([
 			'release' => 'foobar',
 			'--config' => __DIR__.'/../../resources/changelog.config_missing_unlreleased.php',
 		]);
 	}
 
-	/**
-	 * @expectedException \ChangeLog\Console\ReleaseExistsException
-	 */
 	public function testExistingRelease()
 	{
+		$this->expectException(ReleaseExistsException::class);
+
 		$this->commandTester->execute([
 			'release' => '0.0.6',
 			'--config' => __DIR__.'/../../resources/changelog.config.php',
@@ -77,18 +71,9 @@ class ReleaseTest extends Test
 		$this->assertFileExists($outputPath);
 		$jsonContent = json_decode(file_get_contents($outputPath), true);
 
-		$this->assertArraySubset(
-			[
-				'releases' => [
-					'1.0.0' => [
-						'name' => '1.0.0',
-						'link' => null,
-						'linkName' => null,
-					],
-				],
-			],
-			$jsonContent
-		);
+		$this->assertEquals('1.0.0', $jsonContent['releases']['1.0.0']['name']);
+		$this->assertEquals(null, $jsonContent['releases']['1.0.0']['link']);
+		$this->assertEquals(null, $jsonContent['releases']['1.0.0']['linkName']);
 	}
 
 	public function testReleaseWithLink()
@@ -105,18 +90,9 @@ class ReleaseTest extends Test
 		$this->assertFileExists($outputPath);
 		$jsonContent = json_decode(file_get_contents($outputPath), true);
 
-		$this->assertArraySubset(
-			[
-				'releases' => [
-					'1.0.0' => [
-						'name' => '1.0.0',
-						'link' => 'http://foobar.com/release/1.0.0',
-						'linkName' => '1.0.0',
-					],
-				],
-			],
-			$jsonContent
-		);
+		$this->assertEquals('1.0.0', $jsonContent['releases']['1.0.0']['name']);
+		$this->assertEquals('http://foobar.com/release/1.0.0', $jsonContent['releases']['1.0.0']['link']);
+		$this->assertEquals('1.0.0', $jsonContent['releases']['1.0.0']['linkName']);
 	}
 
 	public function testReleaseWithName()
@@ -134,17 +110,8 @@ class ReleaseTest extends Test
 		$this->assertFileExists($outputPath);
 		$jsonContent = json_decode(file_get_contents($outputPath), true);
 
-		$this->assertArraySubset(
-			[
-				'releases' => [
-					'1.0.0' => [
-						'name' => '1.0.0',
-						'link' => 'http://foobar.com/release/1.0.0',
-						'linkName' => 'hello',
-					],
-				],
-			],
-			$jsonContent
-		);
+		$this->assertEquals('1.0.0', $jsonContent['releases']['1.0.0']['name']);
+		$this->assertEquals('http://foobar.com/release/1.0.0', $jsonContent['releases']['1.0.0']['link']);
+		$this->assertEquals('hello', $jsonContent['releases']['1.0.0']['linkName']);
 	}
 }

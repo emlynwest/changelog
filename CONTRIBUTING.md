@@ -11,7 +11,7 @@ Contributions are awesome but to help things along please take a look at the fol
 When opening an issue please make sure to include as much information as possible such as:
 
  - **things you have already tried**
- - Have you tried the latest package version? (`dev-master`)
+ - Have you tried the latest package version? (`dev-main`)
  - Is there already a similar issue?
  - PHP version
  - Stack trace

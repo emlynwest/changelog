@@ -1,27 +1,24 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
 
 namespace ChangeLog\Console;
 
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class AddTest extends Test
+class AddTest extends Unit
 {
 	/**
 	 * @var CommandTester
 	 */
 	protected $commandTester;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 

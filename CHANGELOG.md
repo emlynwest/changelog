@@ -1,5 +1,12 @@
 # Change Log
 
+## [Unreleased]
+### Changed
+ - Converted CI to use GitHub actions [#29](https://github.com/emlynwest/changelog/issues/29)
+ - Raised minimum php version to 8.1 + bare minimum code updates [#28](https://github.com/emlynwest/changelog/issues/28)
+ - Updated composer packages to run with 8.1+ versions of packages [#28](https://github.com/emlynwest/changelog/issues/28)
+ - Updated composer packages and fixed tests to run on 8.1 [#28](https://github.com/emlynwest/changelog/issues/28)
+
 ## [1.3.0]
 ### Added
 - Introduce command line merge command [#25](https://github.com/emlynwest/changelog/issues/25)
@@ -70,6 +77,7 @@
 ### Added
 - Initial version.
 
+[Unreleased]: https://github.com/emlynwest/changelog
 [1.3.0]: https://github.com/emlynwest/changelog/releases/tag/1.3.0
 [1.2.0]: https://github.com/emlynwest/changelog/releases/tag/1.2.0
 [1.1.0]: https://github.com/emlynwest/changelog/releases/tag/1.1.0

@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -11,6 +8,7 @@
 namespace ChangeLog\Console;
 
 use ChangeLog\Release as LogRelease;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,7 +22,7 @@ class Add extends AbstractCommand
 	 * @return string
 	 * @codeCoverageIgnore
 	 */
-	public function getDescription()
+	public function getDescription(): string
 	{
 		return 'Adds a change to a release.';
 	}
@@ -52,7 +50,7 @@ class Add extends AbstractCommand
 		);
 	}
 
-	public function execute(InputInterface $input, OutputInterface $output)
+	public function execute(InputInterface $input, OutputInterface $output): int
 	{
 		parent::execute($input, $output);
 
@@ -71,6 +69,8 @@ class Add extends AbstractCommand
 		$release->addChange($input->getArgument('type'), $input->getArgument('change'));
 
 		$this->changeLog->write($log);
+
+		return Command::SUCCESS;
 	}
 
 }

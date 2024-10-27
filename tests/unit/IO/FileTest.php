@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -11,14 +8,13 @@
 namespace ChangeLog\IO;
 
 use Codeception\Module\Filesystem;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
-use PHPUnit_Framework_Error_Warning;
 
 /**
  * Tests for IO\File
  */
-class FileTest extends Test
+class FileTest extends Unit
 {
 
 	/**
@@ -33,8 +29,13 @@ class FileTest extends Test
 
 	public function testLoadFile()
 	{
+		$fileLocation = __DIR__ . '/../../_output/hello';
+		@unlink ($fileLocation);
+
+		file_put_contents($fileLocation, "hello\n");
+
 		$this->file->setConfig([
-			'file' => __DIR__.'/../../resources/hello'
+			'file' => $fileLocation,
 		]);
 
 		$this->assertEquals(
@@ -43,11 +44,9 @@ class FileTest extends Test
 		);
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
 	public function testFileNotSet()
 	{
+		$this->expectException(InvalidArgumentException::class);
 		$this->file->getContent();
 	}
 

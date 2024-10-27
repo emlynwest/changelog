@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -73,7 +70,7 @@ abstract class AbstractCommand extends Command
 		);
 	}
 
-	public function execute(InputInterface $input, OutputInterface $output)
+	public function execute(InputInterface $input, OutputInterface $output): int
 	{
 		$configLocation = $input->getOption('config');
 
@@ -91,6 +88,8 @@ abstract class AbstractCommand extends Command
 		$this->setParser($input->getOption('parser'));
 		$this->setRenderer($input->getOption('renderer'));
 		$this->setOutput($input->getOption('output'));
+
+		return Command::SUCCESS;
 	}
 
 	protected function setInput($factoryName)

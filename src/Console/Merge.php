@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Erwan Richard <erwan.richard@protonmail.com>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -15,6 +12,7 @@ use ChangeLog\IO\File;
 use ChangeLog\Parser\KeepAChangeLog;
 use ChangeLog\Release as LogRelease;
 use ChangeLog\Renderer\KeepAChangeLog as KeepAChangeLogRenderer;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -29,7 +27,7 @@ class Merge extends AbstractCommand
 	 * @return string
 	 * @codeCoverageIgnore
 	 */
-	public function getDescription()
+	public function getDescription(): string
 	{
 		return 'Merge two or more changelog into one.';
 	}
@@ -45,7 +43,7 @@ class Merge extends AbstractCommand
 		);
 	}
 
-	public function execute(InputInterface $input, OutputInterface $output)
+	public function execute(InputInterface $input, OutputInterface $output): int
 	{
 		parent::execute($input, $output);
 
@@ -61,5 +59,7 @@ class Merge extends AbstractCommand
 
 		// Write updated CHANGELOG
 		$this->changeLog->write($logs);
+
+		return Command::SUCCESS;
 	}
 }
