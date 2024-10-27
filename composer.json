@@ -16,7 +16,7 @@
         "naneau/semver": "^0.0.7"
     },
     "require-dev": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-json": "*",
         "codeception/codeception": "~5.1",
         "codeception/mockery-module": "~0.5",

@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 ### Changed
+ - Changed my mind and bumped min PHP version to 8.2 [#28](https://github.com/emlynwest/changelog/issues/28)
  - Converted CI to use GitHub actions [#29](https://github.com/emlynwest/changelog/issues/29)
  - Raised minimum php version to 8.1 + bare minimum code updates [#28](https://github.com/emlynwest/changelog/issues/28)
  - Updated composer packages to run with 8.1+ versions of packages [#28](https://github.com/emlynwest/changelog/issues/28)
