@@ -3,6 +3,7 @@ imports:
 tools:
   external_code_coverage: true
 build:
+  image: default-bionic
   nodes:
     analysis:
       tests:
