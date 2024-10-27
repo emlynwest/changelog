@@ -16,6 +16,8 @@ jobs:
         php-versions: ['8.2', '8.3']
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -33,3 +35,6 @@ jobs:
 
       - name: Unit Test
         run: vendor/bin/codecept run unit --coverage-xml
+
+      - name: Upload Scrutinizer coverage
+        uses: sudo-bot/action-scrutinizer@latest
