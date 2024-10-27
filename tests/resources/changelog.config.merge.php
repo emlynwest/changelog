@@ -13,6 +13,7 @@ return [
 			'strategy' => 'File',
 			'config' => [
 				'file' => __DIR__.'/changelog.no_unreleased.md',
+				'line_separator' => PHP_EOL,
 			],
 		],
 	],
