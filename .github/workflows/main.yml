@@ -38,3 +38,5 @@ jobs:
 
       - name: Upload Scrutinizer coverage
         uses: sudo-bot/action-scrutinizer@latest
+        with:
+          cli-args: "--format=php-clover tests/_output/coverage.xml"
