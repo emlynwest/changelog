@@ -23,6 +23,7 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: fileinfo
           tools: composer
+          coverage: xdebug
 
       - name: Validate composer
         run: composer validate --strict
@@ -31,4 +32,4 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Unit Test
-        run: vendor/bin/codecept run unit
+        run: vendor/bin/codecept run unit --coverage-xml
