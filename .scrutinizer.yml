@@ -1,4 +1,10 @@
 imports:
-    - php
+  - php
 tools:
-    external_code_coverage: true
+  external_code_coverage: true
+build:
+  nodes:
+    analysis:
+      test:
+        override:
+          - php-scrutinizer-run
