@@ -4,7 +4,7 @@ paths:
     log: tests/_output
     data: tests/_data
     helpers: tests/_support
-    output: .codecept
+    output: tests/_output
 settings:
     bootstrap: _bootstrap.php
     colors: true
