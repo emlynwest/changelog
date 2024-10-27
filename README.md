@@ -1,6 +1,6 @@
 # ChangeLog
 
-[![Travis Build](https://img.shields.io/travis/emlynwest/changelog.svg?style=flat-square)](https://travis-ci.org/emlynwest/changelog/)
+[![Build Status](https://github.com/emlynwest/changelog/actions/workflows/main.yml/badge.svg)](https://github.com/emlynwest/changelog/actions)
 [![Code Coverage](https://img.shields.io/scrutinizer/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
 [![Code Quality](https://img.shields.io/scrutinizer/coverage/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
 [![Packagist](https://img.shields.io/packagist/v/emlynwest/changelog.svg?style=flat-square)](https://packagist.org/packages/emlynwest/changelog)
@@ -142,8 +142,7 @@ Check `changelog.phar help` for more information.
 ## Development
 
 Current plans for development can be found in the repo's [issue tracker][issues].
-If you wish to request extra functionality then open an issue or pull request or give me a poke on [twitter] or anywhere
-else you can find me.
+If you wish to request extra functionality then open an issue or pull request.
 
 Feel free to report any issues on the [issue tracker][issues].
 
@@ -151,13 +150,11 @@ Feel free to report any issues on the [issue tracker][issues].
 
 ### Emlyn West
 
- - [Twitter][twitter]
  - [GitHub]
  - Email: emlyn.west@gmail.com
 
 [KeepAChangeLog]: http://keepachangelog.com/
 [flysystem]: http://flysystem.thephpleague.com/
 [issues]: https://github.com/emlynwest/changelog/issues
-[twitter]: http://twitter.com/emlynwest
 [GitHub]: https://github.com/emlynwest
 [releases]: https://github.com/emlynwest/changelog/releases

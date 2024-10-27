@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -11,14 +8,15 @@
 namespace ChangeLog\IO;
 
 use ChangeLog\Stub\GitHubReleasesStub;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
+use Exception;
 use Mockery;
 use stdClass;
 
 /**
  * Tests for IO\GitHubReleases
  */
-class GitHubReleasesTest extends Test
+class GitHubReleasesTest extends Unit
 {
 
 	public function testGetContent()
@@ -72,12 +70,11 @@ class GitHubReleasesTest extends Test
 		);
 	}
 
-	/**
-	 * @expectedException \Exception
-	 * @expectedExceptionMessage This has yet to be implemented.
-	 */
 	public function testSetContent()
 	{
+		$this->expectException(Exception::class);
+		$this->expectExceptionMessage('This has yet to be implemented.');
+
 		$gitHub = new GitHubReleasesStub;
 		$gitHub->setContent('foobar');
 	}

@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -11,18 +8,18 @@
 namespace ChangeLog\Console;
 
 use ChangeLog\Stub\AbstractCommandStub;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class AbstractCommandTest extends Test
+class AbstractCommandTest extends Unit
 {
 	/**
 	 * @var CommandTester
 	 */
 	protected $commandTester;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
@@ -33,11 +30,10 @@ class AbstractCommandTest extends Test
 		$this->commandTester = new CommandTester($command);
 	}
 
-	/**
-	 * @expectedException \ChangeLog\Console\ConfigNotFoundException
-	 */
 	public function testExecuteWithNoConfig()
 	{
+		$this->expectException(ConfigNotFoundException::class);
+
 		$this->commandTester->execute([
 			'--config' => 'this should not exist',
 		]);

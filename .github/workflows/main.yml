@@ -1,0 +1,42 @@
+name: PHP Composer
+
+on:
+   - push
+   - pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest']
+        php-versions: ['8.2', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: fileinfo
+          tools: composer
+          coverage: xdebug
+
+      - name: Validate composer
+        run: composer validate --strict
+
+      - name: Install
+        run: composer install --prefer-dist --no-progress
+
+      - name: Unit Test
+        run: vendor/bin/codecept run unit --coverage-xml
+
+      - name: Upload Scrutinizer coverage
+        uses: sudo-bot/action-scrutinizer@latest
+        with:
+          cli-args: "--format=php-clover tests/_output/coverage.xml"

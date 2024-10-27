@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -12,13 +9,13 @@ namespace ChangeLog\Renderer;
 
 use ChangeLog\Log;
 use ChangeLog\Release;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use DateTime;
 
 /**
  * Tests for KeepAChangeLog
  */
-class KeepAChangeLogTest extends Test
+class KeepAChangeLogTest extends Unit
 {
 
 	/**
@@ -50,23 +47,23 @@ class KeepAChangeLogTest extends Test
 		]);
 		$log->addRelease($release2);
 
-		$expected = <<<'CONTENT'
-# My change log
-This is my change log, it will have lots of changes in it!
-
-## 1.0.0
-### Added
-- Thing 1
-- Thing 2
-
-### Changed
-- Some change
-
-## 0.1.0
-### Added
-- Initial release
-
-CONTENT;
+		$expected = implode("\n", [
+			'# My change log',
+			'This is my change log, it will have lots of changes in it!',
+			'',
+			'## 1.0.0',
+			'### Added',
+			'- Thing 1',
+			'- Thing 2',
+			'',
+			'### Changed',
+			'- Some change',
+			'',
+			'## 0.1.0',
+			'### Added',
+			'- Initial release',
+			'',
+		]);
 
 		$actual = $this->renderer->render($log);
 		$this->assertEquals(
@@ -115,17 +112,17 @@ CONTENT;
 		$release1->setLinkName('a');
 		$log->addRelease($release1);
 
-		$expected = <<<'EXPECTED'
-# Change log
-My change log
-
-## [1.0.0]
-## [0.1.0][a]
-
-[1.0.0] http://fuelphp.com
-[a] http://google.com
-
-EXPECTED;
+		$expected = implode("\n", [
+			'# Change log',
+			'My change log',
+			'',
+			'## [1.0.0]',
+			'## [0.1.0][a]',
+			'',
+			'[1.0.0] http://fuelphp.com',
+			'[a] http://google.com',
+			'',
+		]);
 
 		$result = $this->renderer->render($log);
 

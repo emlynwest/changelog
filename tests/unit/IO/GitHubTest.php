@@ -1,9 +1,6 @@
 <?php
 /**
- * PHP Version 5.6
  * @category Library
- * @package ChangeLog
- * @author Emlyn West <emlyn.west@gmail.gom>
  * @license MIT http://opensource.org/licenses/MIT
  * @link https://github.com/emlynwest/changelog
  */
@@ -11,7 +8,7 @@
 namespace ChangeLog\IO;
 
 use ChangeLog\Stub\GitHubStub;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use InvalidArgumentException;
 use Mockery;
 use stdClass;
@@ -19,7 +16,7 @@ use stdClass;
 /**
  * Tests for IO\GitHub
  */
-class GitHubTest extends Test
+class GitHubTest extends Unit
 {
 
 	public function testGetContent()
@@ -55,11 +52,10 @@ class GitHubTest extends Test
 		);
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
 	public function testCreateApiWithNoToken()
 	{
+		$this->expectException(InvalidArgumentException::class);
+
 		$gitHub = new GitHubStub;
 		$gitHub->getContent();
 	}
