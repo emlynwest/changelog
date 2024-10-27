@@ -1,6 +1,7 @@
 # ChangeLog
 
 TODO: New build badge
+[![Build Status](https://github.com/emlynwest/changelog/actions/workflows/main.yml/badge.svg)](https://github.com/emlynwest/changelog/actions)
 [![Code Coverage](https://img.shields.io/scrutinizer/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
 [![Code Quality](https://img.shields.io/scrutinizer/coverage/g/emlynwest/changelog.svg?style=flat-square)](https://scrutinizer-ci.com/g/emlynwest/changelog/)
 [![Packagist](https://img.shields.io/packagist/v/emlynwest/changelog.svg?style=flat-square)](https://packagist.org/packages/emlynwest/changelog)
